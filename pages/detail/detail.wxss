@@ -657,12 +657,18 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
+  /* 固定间距左对齐，最后一行不足时不会被拉开 */
   .asset-block {
-    width: 48.6%;
+    width: calc((100% - 16px) / 2);
+    margin-right: 16px;
     margin-bottom: 20px;
+  }
+
+  .asset-block:nth-child(2n) {
+    margin-right: 0;
   }
 
   .asset-actions {
@@ -770,6 +776,14 @@
 
 @media (min-width: 1000px) {
   .asset-block {
-    width: 32.2%;
+    width: calc((100% - 32px) / 3);
+  }
+
+  .asset-block:nth-child(2n) {
+    margin-right: 16px;
+  }
+
+  .asset-block:nth-child(3n) {
+    margin-right: 0;
   }
 }

@@ -538,19 +538,25 @@
   }
 
   .asset-chips {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .asset-chip {
-    width: 32.2%;
+    width: calc((100% - 32px) / 3);
     padding: 8px 10px;
     margin-top: 10px;
+    margin-right: 16px;
     border-width: 1px;
     border-radius: 14px;
   }
 
   .asset-chip:nth-child(2n) {
     margin-left: 0;
+    margin-right: 16px;
+  }
+
+  .asset-chip:nth-child(3n) {
+    margin-right: 0;
   }
 
   .chip-dot {

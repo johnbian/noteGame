@@ -131,7 +131,7 @@
 .card-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .mini-card {
@@ -140,15 +140,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 31.5%;
+  width: calc((100% - 28rpx) / 3);
   min-height: 164rpx;
   padding: 34rpx 12rpx 16rpx;
   margin-top: 16rpx;
+  margin-right: 14rpx;
   overflow: hidden;
   background: #fffdfa;
   border: 3rpx solid #f6e8d6;
   border-radius: 26rpx;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mini-card:nth-child(3n) {
+  margin-right: 0;
 }
 
 .mini-card.is-selected {
@@ -235,8 +240,16 @@
 }
 
 .building-grid .mini-card {
-  width: 48.5%;
+  width: calc((100% - 14rpx) / 2);
   min-height: 172rpx;
+}
+
+.building-grid .mini-card:nth-child(3n) {
+  margin-right: 14rpx;
+}
+
+.building-grid .mini-card:nth-child(2n) {
+  margin-right: 0;
 }
 
 /* ---------- 空搜索结果 ---------- */
@@ -363,12 +376,17 @@
   }
 
   .mini-card {
-    width: 23.5%;
+    width: calc((100% - 32px) / 3);
     min-height: 112px;
     padding: 24px 8px 12px;
     margin-top: 10px;
+    margin-right: 16px;
     border-width: 2px;
     border-radius: 16px;
+  }
+
+  .mini-card:nth-child(3n) {
+    margin-right: 0;
   }
 
   .mini-accent {
@@ -410,8 +428,16 @@
   }
 
   .building-grid .mini-card {
-    width: 32.2%;
+    width: calc((100% - 32px) / 3);
     min-height: 118px;
+  }
+
+  .building-grid .mini-card:nth-child(2n) {
+    margin-right: 16px;
+  }
+
+  .building-grid .mini-card:nth-child(3n) {
+    margin-right: 0;
   }
 
   .no-result {
@@ -439,15 +465,5 @@
 
   .confirm-btn {
     width: 140px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .mini-card {
-    width: 18.5%;
-  }
-
-  .building-grid .mini-card {
-    width: 23.5%;
   }
 }
