@@ -4,9 +4,10 @@
  * - 单 key 保存整局数据，任何增删改都立即落盘
  * - 不包含任何网络请求
  */
-const { normalizePlayer } = require('./model.js');
+const { normalizePlayer, MAX_PLAYERS } = require('./model.js');
 
 const STORAGE_KEY = 'monopoly_game_v1';
+const BACKUP_KEY = 'monopoly_backup_v1';
 const SCHEMA_VERSION = 1;
 
 function emptyState() {
@@ -136,8 +137,41 @@ function clearAllPlayers() {
   }
 }
 
+// 云同步用：导出当前玩家数据（只读副本）
+function exportPlayers() {
+  return readState().players;
+}
+
+// 云同步用：用云端记录整体替换本机数据
+// 覆盖前先把本机旧数据备份到 BACKUP_KEY，误覆盖时还能找回
+function replacePlayers(players) {
+  const list = Array.isArray(players) ? players.slice(0, MAX_PLAYERS) : [];
+  const normalized = list.map(normalizePlayer).filter(Boolean);
+
+  try {
+    const current = readState().players;
+    if (current.length) {
+      wx.setStorageSync(BACKUP_KEY, { players: current, savedAt: Date.now() });
+    }
+  } catch (err) {
+    console.error('备份本地数据失败', err);
+  }
+
+  const ok = writeState({ version: SCHEMA_VERSION, players: normalized, updatedAt: Date.now() });
+  return ok ? normalized : null;
+}
+
+function getBackup() {
+  try {
+    return wx.getStorageSync(BACKUP_KEY) || null;
+  } catch (err) {
+    return null;
+  }
+}
+
 module.exports = {
   STORAGE_KEY,
+  BACKUP_KEY,
   listPlayers,
   getPlayer,
   savePlayer,
@@ -145,5 +179,8 @@ module.exports = {
   countDebtsTo,
   removePlayerAndMigrate,
   clearPlayerAssets,
-  clearAllPlayers
+  clearAllPlayers,
+  exportPlayers,
+  replacePlayers,
+  getBackup
 };

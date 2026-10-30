@@ -67,6 +67,10 @@ Page({
     wx.navigateTo({ url: `/pages/detail/detail?playerId=${playerId}` });
   },
 
+  onOpenSync() {
+    wx.navigateTo({ url: '/pages/sync/sync' });
+  },
+
   // 单个删除：先确认，再检查是否需要迁移负债
   onDeletePlayer(e) {
     const playerId = e.currentTarget.dataset.id;

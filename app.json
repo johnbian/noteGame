@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/detail/detail",
     "pages/edit/edit",
-    "pages/assets/assets"
+    "pages/assets/assets",
+    "pages/sync/sync"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFF3DF",

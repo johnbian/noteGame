@@ -93,6 +93,25 @@
   border-radius: 999rpx;
 }
 
+.hero-side {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sync-pill {
+  padding: 7rpx 18rpx;
+  margin-top: 10rpx;
+  color: #2f7d63;
+  font-size: 21rpx;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2rpx solid rgba(255, 255, 255, 0.9);
+  border-radius: 999rpx;
+  box-shadow: 0 4rpx 10rpx rgba(120, 150, 130, 0.14);
+}
+
 .add-btn {
   position: relative;
   z-index: 1;

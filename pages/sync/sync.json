@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "云同步",
+  "usingComponents": {
+    "popup": "/components/popup/popup"
+  }
+}

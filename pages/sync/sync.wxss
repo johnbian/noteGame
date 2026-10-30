@@ -1,0 +1,163 @@
+.sync-page {
+  padding-bottom: 120rpx;
+}
+
+/* ---------- 顶部说明 ---------- */
+.sync-hero {
+  display: flex;
+  align-items: center;
+  padding: 34rpx 32rpx;
+  margin-bottom: 24rpx;
+  background: linear-gradient(135deg, #dff3ff 0%, #e8f7ee 58%, #fff4e3 100%);
+  border: 4rpx solid rgba(255, 255, 255, 0.8);
+  border-radius: 44rpx;
+  box-shadow: 0 16rpx 34rpx rgba(84, 140, 160, 0.14);
+}
+
+.sync-cloud {
+  flex-shrink: 0;
+  width: 112rpx;
+  height: 112rpx;
+  margin-right: 24rpx;
+  font-size: 62rpx;
+  line-height: 112rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 36rpx;
+}
+
+.sync-hero-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.sync-title {
+  color: #2f5a66;
+  font-size: 36rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.sync-sub {
+  margin-top: 8rpx;
+  color: #6c8a8f;
+  font-size: 22rpx;
+  line-height: 1.5;
+}
+
+/* ---------- 状态 ---------- */
+.status-card {
+  padding: 10rpx 30rpx;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22rpx 0;
+  border-bottom: 2rpx dashed #f3e6d5;
+}
+
+.status-row.is-last {
+  border-bottom: none;
+}
+
+.status-label {
+  color: #8b7f75;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.status-value {
+  color: #3e3554;
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.config-tip {
+  padding: 14rpx 18rpx;
+  margin: 8rpx 0 16rpx;
+  color: #b05a2b;
+  font-size: 21rpx;
+  line-height: 1.5;
+  background: #fff4e8;
+  border-radius: 16rpx;
+}
+
+/* ---------- 操作 ---------- */
+.action-list {
+  margin-top: 4rpx;
+}
+
+.sync-action {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 30rpx;
+  margin-bottom: 20rpx;
+  background: #ffffff;
+  border-radius: 34rpx;
+  box-shadow: 0 12rpx 26rpx rgba(108, 83, 48, 0.07);
+}
+
+.sync-action.is-upload {
+  border: 3rpx solid #ffd9c2;
+}
+
+.sync-action.is-download {
+  border: 3rpx solid #cfeadd;
+}
+
+.sync-action.is-busy {
+  opacity: 0.6;
+}
+
+.action-hover {
+  transform: scale(0.985);
+  opacity: 0.9;
+}
+
+.action-icon {
+  flex-shrink: 0;
+  width: 92rpx;
+  height: 92rpx;
+  margin-right: 22rpx;
+  font-size: 46rpx;
+  line-height: 92rpx;
+  text-align: center;
+  background: #fff6ee;
+  border-radius: 28rpx;
+}
+
+.is-download .action-icon {
+  background: #eef8f2;
+}
+
+.action-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.action-title {
+  color: #3e3554;
+  font-size: 30rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.action-sub {
+  margin-top: 4rpx;
+  color: #a1938a;
+  font-size: 21rpx;
+}
+
+/* ---------- 说明 ---------- */
+.sync-note {
+  padding: 4rpx 12rpx 0;
+}
+
+.note-line {
+  margin-top: 10rpx;
+  color: #ac9f94;
+  font-size: 21rpx;
+  line-height: 1.5;
+}

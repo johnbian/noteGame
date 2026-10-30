@@ -11,7 +11,10 @@
         <view class="hero-title">大富翁记录器</view>
         <view class="hero-sub">把每一局的小财富，都记成可爱的一笔</view>
       </view>
-      <view class="count-pill">{{players.length}} / {{maxPlayers}}</view>
+      <view class="hero-side">
+        <view class="count-pill">{{players.length}} / {{maxPlayers}}</view>
+        <view class="sync-pill" hover-class="pressable" bindtap="onOpenSync">☁️ 云同步</view>
+      </view>
     </view>
 
     <view class="add-btn {{players.length >= maxPlayers ? 'is-full' : ''}}" hover-class="pressable" bindtap="onAddPlayer">

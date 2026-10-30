@@ -1,0 +1,65 @@
+<view class="page sync-page">
+  <view class="sync-hero">
+    <view class="sync-cloud">☁️</view>
+    <view class="sync-hero-copy">
+      <view class="sync-title">一份记录 · 多端共用</view>
+      <view class="sync-sub">服务器上只保留一份玩家记录，后上传的会覆盖先前的。</view>
+    </view>
+  </view>
+
+  <view class="section-card status-card">
+    <view class="status-row">
+      <text class="status-label">本机玩家</text>
+      <text class="status-value">{{localCount}} 位</text>
+    </view>
+    <view class="status-row">
+      <text class="status-label">最近上传</text>
+      <text class="status-value">{{lastUploadText}}</text>
+    </view>
+    <view class="status-row is-last">
+      <text class="status-label">最近同步</text>
+      <text class="status-value">{{lastSyncText}}</text>
+    </view>
+    <view wx:if="{{!configured}}" class="config-tip">
+      尚未填写云开发环境 ID，请先在 utils/cloudConfig.js 中配置。
+    </view>
+  </view>
+
+  <view class="action-list">
+    <view class="sync-action is-upload {{uploading ? 'is-busy' : ''}}" hover-class="action-hover" bindtap="onUpload">
+      <view class="action-icon">⬆️</view>
+      <view class="action-copy">
+        <view class="action-title">{{uploading ? '上传中…' : '上传到云端'}}</view>
+        <view class="action-sub">用本机记录覆盖云端</view>
+      </view>
+    </view>
+
+    <view class="sync-action is-download {{syncing ? 'is-busy' : ''}}" hover-class="action-hover" bindtap="onSync">
+      <view class="action-icon">⬇️</view>
+      <view class="action-copy">
+        <view class="action-title">{{syncing ? '同步中…' : '从云端同步'}}</view>
+        <view class="action-sub">用云端记录覆盖本机</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="sync-note">
+    <view class="note-line">· 只同步玩家数据，不涉及其他内容。</view>
+    <view class="note-line">· 网络失败不会影响本机记录，稍后重试即可。</view>
+    <view class="note-line">· 同步覆盖前会自动备份本机数据。</view>
+    <view class="note-line">· 微信头像图片仅存于本机，其他设备可能显示默认头像。</view>
+  </view>
+
+  <popup
+    visible="{{modalVisible}}"
+    title="{{modalTitle}}"
+    content="{{modalContent}}"
+    confirm-text="{{modalConfirmText}}"
+    cancel-text="{{modalCancelText}}"
+    show-cancel="{{modalShowCancel}}"
+    danger="{{modalDanger}}"
+    icon="{{modalIcon}}"
+    bind:confirm="onModalConfirm"
+    bind:cancel="onModalCancel"
+  />
+</view>
