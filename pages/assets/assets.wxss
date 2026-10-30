@@ -1,0 +1,286 @@
+.assets-page {
+  padding-top: 22rpx;
+}
+
+/* ---------- 搜索与分类 ---------- */
+.top-card {
+  padding: 24rpx;
+  margin-bottom: 22rpx;
+  background: #ffffff;
+  border: 2rpx solid #fff0de;
+  border-radius: 38rpx;
+  box-shadow: 0 14rpx 30rpx rgba(108, 83, 48, 0.07);
+}
+
+.search-shell {
+  display: flex;
+  align-items: center;
+  height: 82rpx;
+  padding: 0 22rpx;
+  background: #fff9f0;
+  border: 2rpx solid #f5e7d2;
+  border-radius: 999rpx;
+}
+
+.search-icon {
+  margin-right: 12rpx;
+  font-size: 28rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  color: #3e3554;
+  font-size: 27rpx;
+}
+
+.search-placeholder {
+  color: #c8bcae;
+}
+
+.search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rpx;
+  height: 40rpx;
+  color: #a89c90;
+  font-size: 20rpx;
+  background: #f1e6d7;
+  border-radius: 50%;
+}
+
+.tabs {
+  display: flex;
+  padding: 6rpx;
+  margin-top: 18rpx;
+  background: #fff5e9;
+  border-radius: 999rpx;
+}
+
+.tab {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 68rpx;
+  color: #a2958a;
+  font-size: 25rpx;
+  font-weight: 800;
+  border-radius: 999rpx;
+}
+
+.tab.is-active {
+  color: #f2714b;
+  background: #ffffff;
+  box-shadow: 0 8rpx 18rpx rgba(200, 130, 80, 0.14);
+}
+
+.tab-badge {
+  margin-left: 8rpx;
+  padding: 1rpx 11rpx;
+  color: #b0876c;
+  font-size: 18rpx;
+  font-weight: 800;
+  background: #fff0e2;
+  border-radius: 999rpx;
+}
+
+.top-tip {
+  margin-top: 14rpx;
+  color: #b1a69b;
+  font-size: 21rpx;
+  text-align: center;
+}
+
+/* ---------- 分组与卡牌 ---------- */
+.group-card {
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  background: #ffffff;
+  border: 2rpx solid #fff0de;
+  border-radius: 36rpx;
+  box-shadow: 0 14rpx 30rpx rgba(108, 83, 48, 0.06);
+}
+
+.group-head {
+  display: flex;
+  align-items: center;
+}
+
+.group-dot {
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 10rpx;
+  border-radius: 50%;
+}
+
+.group-name {
+  flex: 1;
+  color: #4a3f5c;
+  font-size: 28rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.group-count {
+  color: #b1a69b;
+  font-size: 21rpx;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mini-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 31.5%;
+  min-height: 164rpx;
+  padding: 34rpx 12rpx 16rpx;
+  margin-top: 16rpx;
+  overflow: hidden;
+  background: #fffdfa;
+  border: 3rpx solid #f6e8d6;
+  border-radius: 26rpx;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mini-card.is-selected {
+  box-shadow: 0 10rpx 22rpx rgba(108, 83, 48, 0.12);
+  transform: translateY(-2rpx);
+}
+
+.mini-accent {
+  position: absolute;
+  top: 0;
+  right: 32rpx;
+  left: 32rpx;
+  height: 8rpx;
+  border-radius: 0 0 8rpx 8rpx;
+}
+
+.mini-check {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42rpx;
+  height: 42rpx;
+  background: #ffffff;
+  border: 3rpx solid #eddcc8;
+  border-radius: 50%;
+  box-shadow: 0 4rpx 10rpx rgba(108, 83, 48, 0.1);
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+/* 用边框绘制对勾，避免不同机型对 ✓ 字符渲染不一致 */
+.check-mark {
+  width: 11rpx;
+  height: 20rpx;
+  margin-top: -5rpx;
+  border: solid #ffffff;
+  border-width: 0 4rpx 4rpx 0;
+  opacity: 0;
+  transform: rotate(45deg) scale(0.5);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.mini-check.is-on {
+  background: #f2714b;
+  border-color: #ffffff;
+  box-shadow: 0 6rpx 14rpx rgba(242, 113, 75, 0.35);
+  transform: scale(1.06);
+}
+
+.mini-check.is-on .check-mark {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+.mini-name {
+  color: #3e3554;
+  font-size: 26rpx;
+  font-weight: 900;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.mini-price {
+  margin-top: 6rpx;
+  color: #8b7f75;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
+.mini-level {
+  max-width: 100%;
+  padding: 3rpx 11rpx;
+  margin-top: 8rpx;
+  overflow: hidden;
+  color: #a89c90;
+  font-size: 18rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: #fff7ec;
+  border-radius: 999rpx;
+}
+
+.building-grid .mini-card {
+  width: 48.5%;
+  min-height: 172rpx;
+}
+
+/* ---------- 空搜索结果 ---------- */
+.no-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 30rpx;
+  background: rgba(255, 255, 255, 0.82);
+  border: 3rpx dashed #f1dfc8;
+  border-radius: 36rpx;
+}
+
+.no-result-icon {
+  font-size: 64rpx;
+}
+
+.no-result-text {
+  margin-top: 14rpx;
+  color: #a89c90;
+  font-size: 25rpx;
+}
+
+/* ---------- 底部确认 ---------- */
+.select-summary {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-left: 6rpx;
+}
+
+.select-count {
+  color: #4a3f5c;
+  font-size: 26rpx;
+  font-weight: 900;
+}
+
+.select-value {
+  margin-top: 2rpx;
+  color: #a89c90;
+  font-size: 21rpx;
+}
+
+.confirm-btn {
+  flex: none;
+  width: 210rpx;
+}

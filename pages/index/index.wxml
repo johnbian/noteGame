@@ -1,0 +1,132 @@
+<view class="page home-page">
+  <!-- 顶部卡通头图 + 添加入口 -->
+  <view class="hero">
+    <view class="hero-bubble bubble-a"></view>
+    <view class="hero-bubble bubble-b"></view>
+    <view class="hero-bubble bubble-c"></view>
+
+    <view class="hero-top">
+      <view class="hero-copy">
+        <view class="hero-kicker">🎲 MONOPOLY LOG</view>
+        <view class="hero-title">大富翁记录器</view>
+        <view class="hero-sub">把每一局的小财富，都记成可爱的一笔</view>
+      </view>
+      <view class="count-pill">{{players.length}} / {{maxPlayers}}</view>
+    </view>
+
+    <view class="add-btn {{players.length >= maxPlayers ? 'is-full' : ''}}" hover-class="pressable" bindtap="onAddPlayer">
+      <text class="add-plus">＋</text>
+      <text class="add-text">{{players.length >= maxPlayers ? '玩家已满' : '添加玩家'}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{players.length}}" class="list-head">
+    <text class="list-title">玩家列表</text>
+    <text class="list-tip">点击卡片查看详情</text>
+  </view>
+
+  <!-- 玩家卡片列表 -->
+  <view class="player-list">
+    <view
+      wx:for="{{players}}"
+      wx:key="id"
+      class="player-card"
+      hover-class="card-hover"
+      data-id="{{item.id}}"
+      bindtap="onOpenPlayer"
+    >
+      <view class="delete-fab" data-id="{{item.id}}" catchtap="onDeletePlayer">×</view>
+
+      <view class="card-top">
+        <view class="avatar" style="background: {{item.avatar.bg}}">
+          <image wx:if="{{item.avatar.kind === 'image'}}" class="avatar-img" src="{{item.avatar.src}}" mode="aspectFill" />
+          <text wx:else class="avatar-emoji">{{item.avatar.value}}</text>
+        </view>
+
+        <view class="player-main">
+          <view class="player-name">{{item.nickname}}</view>
+          <view class="stat-row">
+            <view class="stat-chip">💰 存款 ¥{{item.depositText}}</view>
+            <view class="stat-chip {{item.hasDebt ? 'is-debt' : 'is-clear'}}">📮 {{item.debtChipText}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 城市资产：按同色系分组，展示民宿 / 度假村状态 -->
+      <view class="card-section">
+        <view class="card-section-head">
+          <text class="section-label">🏙 城市资产</text>
+          <text wx:if="{{item.hasBuildings}}" class="section-side">公共建筑 ×{{item.buildingCount}}</text>
+        </view>
+
+        <view wx:if="{{item.cityGroups.length}}" class="city-groups">
+          <view class="city-group" wx:for="{{item.cityGroups}}" wx:for-item="group" wx:key="key">
+            <view class="group-line">
+              <view class="group-dot" style="background: {{group.color}}"></view>
+              <text class="group-name">{{group.name}}系</text>
+              <text class="group-count">{{group.cities.length}} 座</text>
+            </view>
+            <view class="city-tags">
+              <view
+                class="city-tag"
+                wx:for="{{group.cities}}"
+                wx:for-item="city"
+                wx:key="key"
+                style="background: {{group.soft}}; border-color: {{group.color}};"
+              >
+                <text class="city-name" style="color: {{group.tone}}">{{city.name}}</text>
+                <text class="city-level">{{city.levelLabel}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:else class="section-empty">暂无城市资产</view>
+      </view>
+
+      <!-- 欠款：逐条展示欠谁多少钱 -->
+      <view class="card-section">
+        <view class="card-section-head">
+          <text class="section-label">📮 欠款明细</text>
+          <text wx:if="{{item.hasDebt}}" class="section-side is-debt">共 ¥{{item.debtTotalText}}</text>
+        </view>
+
+        <view wx:if="{{item.hasDebt}}" class="debt-list">
+          <view class="debt-line" wx:for="{{item.debtsView}}" wx:for-item="debt" wx:key="id">
+            <text class="debt-to">欠 {{debt.creditorName}}</text>
+            <text class="debt-amount">¥{{debt.amountText}}</text>
+          </view>
+        </view>
+        <view wx:else class="debt-clear">无负债，财务健康 ✨</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{!players.length}}" class="empty-state">
+    <view class="empty-art">
+      <view class="empty-cloud">☁️</view>
+      <view class="empty-board">🎲</view>
+      <view class="empty-face">🦊</view>
+      <view class="empty-spark">✨</view>
+    </view>
+    <view class="empty-title">还没有玩家加入游戏</view>
+    <view class="empty-text">点击上方按钮添加第一位玩家</view>
+  </view>
+
+  <view wx:if="{{players.length}}" class="bottom-bar">
+    <view class="clear-all pressable" bindtap="onClearAll">🧹 一键删除所有玩家</view>
+  </view>
+
+  <popup
+    visible="{{modalVisible}}"
+    title="{{modalTitle}}"
+    content="{{modalContent}}"
+    confirm-text="{{modalConfirmText}}"
+    cancel-text="{{modalCancelText}}"
+    show-cancel="{{modalShowCancel}}"
+    danger="{{modalDanger}}"
+    icon="{{modalIcon}}"
+    bind:confirm="onModalConfirm"
+    bind:cancel="onModalCancel"
+  />
+</view>

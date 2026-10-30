@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "大富翁记录器",
+  "usingComponents": {
+    "popup": "/components/popup/popup"
+  }
+}

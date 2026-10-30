@@ -1,0 +1,512 @@
+.detail-page {
+  padding-top: 22rpx;
+}
+
+/* ---------- 玩家头部 ---------- */
+.detail-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e9f9f1 0%, #def2ff 58%, #fff2d9 100%);
+  border: 3rpx solid rgba(255, 255, 255, 0.86);
+  border-radius: 42rpx;
+  box-shadow: 0 16rpx 34rpx rgba(92, 141, 126, 0.12);
+}
+
+.hero-shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+.shape-a {
+  top: -60rpx;
+  right: -30rpx;
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.shape-b {
+  bottom: -64rpx;
+  left: 120rpx;
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.player-avatar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 132rpx;
+  height: 132rpx;
+  overflow: hidden;
+  border: 5rpx solid #ffffff;
+  border-radius: 44rpx;
+  box-shadow: 0 12rpx 24rpx rgba(108, 83, 48, 0.14);
+  transform: rotate(-3deg);
+}
+
+.player-avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.player-avatar-emoji {
+  font-size: 68rpx;
+  line-height: 1;
+}
+
+.player-intro {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  padding: 0 16rpx 0 24rpx;
+}
+
+.player-name {
+  overflow: hidden;
+  color: #334b46;
+  font-size: 39rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.player-meta {
+  margin-top: 6rpx;
+  color: #6f938c;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.edit-chip {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  padding: 12rpx 20rpx;
+  color: #e07a4f;
+  font-size: 22rpx;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.78);
+  border: 2rpx solid rgba(255, 255, 255, 0.9);
+  border-radius: 999rpx;
+}
+
+/* ---------- 资产图表 ---------- */
+.chart-card {
+  padding: 28rpx;
+}
+
+.chart-row {
+  display: flex;
+  align-items: center;
+}
+
+.chart-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 330rpx;
+  height: 330rpx;
+}
+
+.chart-canvas {
+  width: 330rpx;
+  height: 330rpx;
+}
+
+.chart-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-center-label {
+  color: #a89c90;
+  font-size: 21rpx;
+  font-weight: 700;
+}
+
+.chart-center-value {
+  margin-top: 2rpx;
+  color: #4a3f5c;
+  font-size: 34rpx;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-center-value.is-negative {
+  color: #e2554e;
+}
+
+.legend {
+  flex: 1;
+  min-width: 0;
+  padding-left: 22rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14rpx;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-dot {
+  flex-shrink: 0;
+  width: 16rpx;
+  height: 16rpx;
+  margin-right: 12rpx;
+  border-radius: 50%;
+}
+
+.legend-dot.fixed {
+  background: #6ba8ff;
+}
+
+.legend-dot.deposit {
+  background: #59c3a6;
+}
+
+.legend-dot.debt {
+  background: #ff7a6b;
+}
+
+.legend-dot.net {
+  background: #b49cf0;
+}
+
+.legend-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.legend-label {
+  color: #a89c90;
+  font-size: 19rpx;
+  font-weight: 600;
+}
+
+.legend-value {
+  margin-top: 1rpx;
+  overflow: hidden;
+  color: #3e3554;
+  font-size: 25rpx;
+  font-weight: 900;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.legend-value.is-negative {
+  color: #e2554e;
+}
+
+.net-warning {
+  padding: 12rpx 18rpx;
+  margin-top: 18rpx;
+  color: #c65b52;
+  font-size: 22rpx;
+  text-align: center;
+  background: #fff0ee;
+  border-radius: 20rpx;
+}
+
+/* ---------- 负债明细 ---------- */
+.debt-total {
+  color: #e2554e;
+  font-size: 23rpx;
+  font-weight: 800;
+}
+
+.debt-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 2rpx;
+  border-bottom: 2rpx dashed #f5e9d9;
+}
+
+.debt-line:last-child {
+  padding-bottom: 4rpx;
+  border-bottom: none;
+}
+
+.debt-left {
+  display: flex;
+  align-items: center;
+}
+
+.debt-icon {
+  margin-right: 10rpx;
+  font-size: 26rpx;
+}
+
+.debt-to {
+  color: #6d5f52;
+  font-size: 25rpx;
+  font-weight: 700;
+}
+
+.debt-amount {
+  color: #e2554e;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+/* ---------- 固定资产 ---------- */
+.assets-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8rpx 8rpx 18rpx;
+}
+
+.asset-block {
+  margin-bottom: 26rpx;
+}
+
+.asset-actions {
+  display: flex;
+  margin-top: 14rpx;
+}
+
+.asset-action {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 76rpx;
+  margin-left: 12rpx;
+  color: #6d5f52;
+  font-size: 23rpx;
+  font-weight: 800;
+  background: #fff8ee;
+  border: 2rpx solid #f3e4d2;
+  border-radius: 24rpx;
+}
+
+.asset-action:first-child {
+  margin-left: 0;
+}
+
+.asset-action.is-redeem {
+  color: #2e8b6d;
+  background: #eaf8f2;
+  border-color: #cdeedf;
+}
+
+.asset-action.is-locked {
+  color: #b3a79a;
+  background: #f5f1ea;
+  border-color: #ece4d9;
+}
+
+.asset-action.is-delete {
+  color: #d4534b;
+  background: #fff0ee;
+  border-color: #ffd3cd;
+}
+
+/* ---------- 建筑工坊 ---------- */
+.builder {
+  padding: 20rpx 22rpx 22rpx;
+  margin-top: 14rpx;
+  background: #fffdf8;
+  border: 3rpx dashed #f0dfc9;
+  border-radius: 28rpx;
+  box-shadow: 0 10rpx 24rpx rgba(108, 83, 48, 0.06);
+}
+
+.builder-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.builder-title {
+  color: #5c5047;
+  font-size: 25rpx;
+  font-weight: 900;
+}
+
+.builder-close {
+  color: #f07b52;
+  font-size: 21rpx;
+  font-weight: 800;
+}
+
+.builder-line {
+  display: flex;
+  align-items: center;
+  margin-top: 18rpx;
+}
+
+.builder-label {
+  width: 132rpx;
+  color: #5c5047;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  padding: 5rpx;
+  background: #ffffff;
+  border: 2rpx solid #f1e2ce;
+  border-radius: 999rpx;
+}
+
+.step-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54rpx;
+  height: 54rpx;
+  color: #f2714b;
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 1;
+  background: #fff1e2;
+  border-radius: 50%;
+}
+
+.step-btn.is-disabled {
+  opacity: 0.35;
+}
+
+.step-value {
+  min-width: 108rpx;
+  color: #3e3554;
+  font-size: 24rpx;
+  font-weight: 900;
+  text-align: center;
+}
+
+.builder-cost {
+  margin-left: auto;
+  color: #a89c90;
+  font-size: 20rpx;
+}
+
+.resort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 62rpx;
+  padding: 0 24rpx;
+  margin-left: auto;
+  font-size: 22rpx;
+  font-weight: 800;
+  border-radius: 999rpx;
+}
+
+.resort-btn.is-ready {
+  color: #2e8b6d;
+  background: #eaf8f2;
+  border: 2rpx solid #cdeedf;
+}
+
+.resort-btn.is-locked {
+  color: #b3a79a;
+  background: #f3eee6;
+  border: 2rpx solid #ece4d9;
+}
+
+.resort-btn.is-demolish {
+  color: #d4534b;
+  background: #fff0ee;
+  border: 2rpx solid #ffd3cd;
+}
+
+.builder-tip {
+  margin-top: 16rpx;
+  color: #a89c90;
+  font-size: 21rpx;
+}
+
+.builder-toll {
+  color: #f2714b;
+  font-weight: 900;
+}
+
+.builder-hint {
+  margin-top: 6rpx;
+  color: #c49a6c;
+  font-size: 20rpx;
+}
+
+.builder-hint.is-ok {
+  color: #2e8b6d;
+}
+
+/* ---------- 空资产 ---------- */
+.empty-assets {
+  padding: 46rpx 36rpx 50rpx;
+  margin-bottom: 24rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.84);
+  border: 3rpx dashed #f1dfc8;
+  border-radius: 40rpx;
+}
+
+.empty-assets-art {
+  font-size: 92rpx;
+  line-height: 1.1;
+}
+
+.empty-assets-title {
+  margin-top: 14rpx;
+  color: #4a3f5c;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.empty-assets-text {
+  margin-top: 8rpx;
+  color: #a89c90;
+  font-size: 23rpx;
+}
+
+.empty-assets-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 70rpx;
+  padding: 0 30rpx;
+  margin-top: 22rpx;
+  color: #f2714b;
+  font-size: 24rpx;
+  font-weight: 800;
+  background: #fff4e8;
+  border: 2rpx solid #ffddca;
+  border-radius: 999rpx;
+}
+
+/* ---------- 底部 ---------- */
+.detail-bar .ghost-btn,
+.detail-bar .danger-outline {
+  flex: 1;
+}
+
+.link-hover {
+  opacity: 0.72;
+}

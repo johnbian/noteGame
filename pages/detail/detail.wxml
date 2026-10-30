@@ -1,0 +1,175 @@
+<view wx:if="{{player}}" class="page detail-page">
+  <!-- 玩家头部 -->
+  <view class="detail-hero">
+    <view class="hero-shape shape-a"></view>
+    <view class="hero-shape shape-b"></view>
+    <view class="player-avatar" style="background: {{avatar.bg}}">
+      <image wx:if="{{avatar.kind === 'image'}}" class="player-avatar-img" src="{{avatar.src}}" mode="aspectFill" />
+      <text wx:else class="player-avatar-emoji">{{avatar.value}}</text>
+    </view>
+    <view class="player-intro">
+      <view class="player-name">{{player.nickname}}</view>
+      <view class="player-meta">{{stats.assetCount}} 项固定资产 · {{debtsView.length}} 条负债</view>
+    </view>
+    <view class="edit-chip" hover-class="link-hover" bindtap="onEditPlayer">✏️ 编辑</view>
+  </view>
+
+  <!-- 资产环形图 -->
+  <view class="section-card chart-card">
+    <view class="section-head">
+      <text class="section-title">资产总览</text>
+      <text class="section-note">固定资产按卡面价计</text>
+    </view>
+
+    <view class="chart-row">
+      <view class="chart-wrap">
+        <canvas type="2d" id="assetChart" class="chart-canvas"></canvas>
+        <view class="chart-center">
+          <text class="chart-center-label">净资产</text>
+          <text class="chart-center-value {{stats.netNegative ? 'is-negative' : ''}}">{{stats.netDisplay}}</text>
+        </view>
+      </view>
+
+      <view class="legend">
+        <view class="legend-item">
+          <view class="legend-dot fixed"></view>
+          <view class="legend-text">
+            <text class="legend-label">固定资产</text>
+            <text class="legend-value">¥{{stats.assetValueText}}</text>
+          </view>
+        </view>
+        <view class="legend-item">
+          <view class="legend-dot deposit"></view>
+          <view class="legend-text">
+            <text class="legend-label">存款</text>
+            <text class="legend-value">¥{{stats.depositText}}</text>
+          </view>
+        </view>
+        <view class="legend-item">
+          <view class="legend-dot debt"></view>
+          <view class="legend-text">
+            <text class="legend-label">负债</text>
+            <text class="legend-value">¥{{stats.debtTotalText}}</text>
+          </view>
+        </view>
+        <view class="legend-item">
+          <view class="legend-dot net"></view>
+          <view class="legend-text">
+            <text class="legend-label">净资产</text>
+            <text class="legend-value {{stats.netNegative ? 'is-negative' : ''}}">{{stats.netDisplay}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{stats.netNegative}}" class="net-warning">⚠️ 净资产为负，记得留意负债哦</view>
+  </view>
+
+  <!-- 负债明细 -->
+  <view wx:if="{{debtsView.length}}" class="section-card">
+    <view class="section-head">
+      <text class="section-title">负债明细</text>
+      <text class="debt-total">共 ¥{{stats.debtTotalText}}</text>
+    </view>
+    <view class="debt-line" wx:for="{{debtsView}}" wx:key="id">
+      <view class="debt-left">
+        <text class="debt-icon">📮</text>
+        <text class="debt-to">欠 {{item.creditorName}}</text>
+      </view>
+      <text class="debt-amount">¥{{item.amountText}}</text>
+    </view>
+  </view>
+
+  <!-- 固定资产 -->
+  <view class="assets-head">
+    <text class="section-title">固定资产 · {{assetViews.length}}</text>
+    <text class="section-note">轻点卡牌翻面</text>
+  </view>
+
+  <view wx:if="{{assetViews.length}}" class="asset-list">
+    <view class="asset-block" wx:for="{{assetViews}}" wx:key="id">
+      <asset-card asset="{{item}}" />
+
+      <view class="asset-actions">
+        <view
+          class="asset-action {{item.mortgaged ? 'is-redeem' : ''}}"
+          hover-class="link-hover"
+          data-id="{{item.id}}"
+          bindtap="onToggleMortgage"
+        >{{item.mortgaged ? '💚 赎回' : '🔒 抵押'}}</view>
+
+        <view
+          wx:if="{{item.isCity}}"
+          class="asset-action {{item.mortgaged ? 'is-locked' : ''}}"
+          hover-class="link-hover"
+          data-id="{{item.id}}"
+          bindtap="onOpenBuilder"
+        >{{item.mortgaged ? '🚫 抵押中' : '🔧 编辑建筑'}}</view>
+
+        <view class="asset-action is-delete" hover-class="link-hover" data-id="{{item.id}}" bindtap="onDeleteAsset">🗑️ 删除</view>
+      </view>
+
+      <!-- 建筑工坊：仅城市、且未抵押时可展开 -->
+      <view wx:if="{{item.isCity && editingId === item.id}}" class="builder">
+        <view class="builder-head">
+          <text class="builder-title">🏗 建筑工坊</text>
+          <text class="builder-close" bindtap="onCloseBuilder">收起</text>
+        </view>
+
+        <view class="builder-line">
+          <text class="builder-label">🏡 民宿</text>
+          <view class="stepper">
+            <view class="step-btn {{item.resort ? 'is-disabled' : ''}}" data-id="{{item.id}}" data-delta="-1" bindtap="onStepHomestay">−</view>
+            <text class="step-value">{{item.resort ? 0 : item.homestayCount}} 间</text>
+            <view class="step-btn {{item.resort ? 'is-disabled' : ''}}" data-id="{{item.id}}" data-delta="1" bindtap="onStepHomestay">＋</view>
+          </view>
+          <text class="builder-cost">¥{{item.homestayCostText}} / 间</text>
+        </view>
+
+        <view class="builder-line">
+          <text class="builder-label">🌴 度假村</text>
+          <view
+            wx:if="{{!item.resort}}"
+            class="resort-btn {{item.homestayCount === 3 ? 'is-ready' : 'is-locked'}}"
+            hover-class="link-hover"
+            data-id="{{item.id}}"
+            bindtap="onBuildResort"
+          >建造 ¥{{item.resortCostText}}</view>
+          <view wx:else class="resort-btn is-demolish" hover-class="link-hover" data-id="{{item.id}}" bindtap="onDemolishResort">拆除回 3 间民宿</view>
+        </view>
+
+        <view class="builder-tip">
+          当前观光费 <text class="builder-toll">¥{{item.currentTollText}}</text> · 度假村与 3 间民宿互斥
+        </view>
+        <view wx:if="{{item.resort}}" class="builder-hint is-ok">度假村已替换 3 间民宿，拆除后会回到 3 间民宿</view>
+        <view wx:elif="{{item.homestayCount !== 3}}" class="builder-hint">盖满 3 间民宿后才能建造度假村</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 无固定资产 -->
+  <view wx:else class="empty-assets">
+    <view class="empty-assets-art">🏝️</view>
+    <view class="empty-assets-title">还没有固定资产</view>
+    <view class="empty-assets-text">去挑几座城市或公共建筑，开始收租吧～</view>
+    <view class="empty-assets-btn" hover-class="link-hover" bindtap="onEditPlayer">去添加固定资产</view>
+  </view>
+
+  <view class="bottom-bar detail-bar">
+    <view class="ghost-btn" bindtap="onEditPlayer">✏️ 编辑资料</view>
+    <view class="danger-outline" bindtap="onClearAssets">🧹 一键清空资产</view>
+  </view>
+
+  <popup
+    visible="{{modalVisible}}"
+    title="{{modalTitle}}"
+    content="{{modalContent}}"
+    confirm-text="{{modalConfirmText}}"
+    cancel-text="{{modalCancelText}}"
+    show-cancel="{{modalShowCancel}}"
+    danger="{{modalDanger}}"
+    icon="{{modalIcon}}"
+    bind:confirm="onModalConfirm"
+    bind:cancel="onModalCancel"
+  />
+</view>

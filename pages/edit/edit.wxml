@@ -1,0 +1,166 @@
+<view class="page edit-page">
+  <view class="form-hero">
+    <view class="form-kicker">{{isEdit ? 'EDIT PLAYER' : 'NEW PLAYER'}}</view>
+    <view class="form-title">{{isEdit ? '给玩家换个新状态' : '邀请一位新玩家'}}</view>
+    <view class="form-sub">{{isEdit ? '昵称、头像、资产与负债都会同步更新' : '头像、昵称和初始资产都可以随时修改'}}</view>
+  </view>
+
+  <!-- 头像 -->
+  <view class="section-card avatar-card">
+    <view class="avatar-main">
+      <view class="avatar-preview" style="background: {{avatarPreview.bg}}">
+        <image wx:if="{{avatarPreview.kind === 'image'}}" class="avatar-preview-img" src="{{avatarPreview.src}}" mode="aspectFill" />
+        <text wx:else class="avatar-preview-emoji">{{avatarPreview.value}}</text>
+      </view>
+      <view class="avatar-main-text">
+        <view class="field-label">选择卡通伙伴</view>
+        <view class="avatar-hint">点选下方头像，或使用微信头像</view>
+        <button class="wx-avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">🖼 微信头像</button>
+      </view>
+    </view>
+
+    <view class="avatar-grid">
+      <view
+        wx:for="{{avatars}}"
+        wx:key="value"
+        class="avatar-option {{form.avatar === item.value ? 'is-selected' : ''}}"
+        style="background: {{item.bg}}"
+        data-value="{{item.value}}"
+        bindtap="onPickAvatar"
+      >
+        <text class="avatar-option-emoji">{{item.emoji}}</text>
+        <view wx:if="{{form.avatar === item.value}}" class="avatar-check">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 昵称 -->
+  <view class="section-card">
+    <view class="section-head">
+      <text class="section-title">昵称</text>
+      <text class="required">必填</text>
+    </view>
+    <input
+      class="input-shell"
+      value="{{form.nickname}}"
+      maxlength="20"
+      placeholder="给玩家起个可爱的名字"
+      placeholder-class="input-placeholder"
+      bindinput="onNicknameInput"
+    />
+    <view wx:if="{{errors.nickname}}" class="field-error">{{errors.nickname}}</view>
+  </view>
+
+  <!-- 固定资产 -->
+  <view class="section-card">
+    <view class="section-head">
+      <text class="section-title">固定资产</text>
+      <text class="section-note">可跳过，之后再加</text>
+    </view>
+
+    <view class="asset-bar">
+      <view class="asset-bar-left">
+        <text class="asset-count">{{assetViews.length}} 项资产</text>
+        <text class="asset-value">估值 ¥{{assetValueText}}</text>
+      </view>
+      <view class="asset-pick" hover-class="link-hover" bindtap="onPickAssets">选择资产 ›</view>
+    </view>
+
+    <view wx:if="{{assetViews.length}}" class="asset-chips">
+      <view class="asset-chip" wx:for="{{assetViews}}" wx:key="id">
+        <view class="chip-dot" style="background: {{item.color}}"></view>
+        <view class="chip-text">
+          <text class="chip-name">{{item.name}}</text>
+          <text class="chip-meta">{{item.levelLabel}} · ¥{{item.priceText}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="asset-empty" bindtap="onPickAssets">
+      <text class="asset-empty-icon">🏙️</text>
+      <view class="asset-empty-text">
+        <text class="asset-empty-title">挑几处房产吧</text>
+        <text class="asset-empty-sub">22 座城市 + 6 项公共建筑</text>
+      </view>
+      <text class="asset-empty-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 存款 -->
+  <view class="section-card">
+    <view class="section-head">
+      <text class="section-title">存款</text>
+      <text class="section-note">单位：元</text>
+    </view>
+    <view class="input-money">
+      <text class="money-prefix">¥</text>
+      <input
+        class="money-input"
+        type="digit"
+        maxlength="11"
+        value="{{form.deposit}}"
+        placeholder="0"
+        placeholder-class="input-placeholder"
+        bindinput="onDepositInput"
+      />
+    </view>
+    <view wx:if="{{errors.deposit}}" class="field-error">{{errors.deposit}}</view>
+  </view>
+
+  <!-- 负债 -->
+  <view class="section-card">
+    <view class="section-head">
+      <text class="section-title">负债</text>
+      <text class="link" bindtap="onAddDebt">＋ 添加负债</text>
+    </view>
+
+    <view class="debt-summary">
+      <text class="debt-summary-label">负债合计</text>
+      <text class="debt-summary-value">¥{{debtTotalText}}</text>
+    </view>
+
+    <view wx:for="{{debtRows}}" wx:key="id" class="debt-row">
+      <view class="debt-line">
+        <view class="input-money debt-money">
+          <text class="money-prefix">¥</text>
+          <input
+            class="money-input debt-input"
+            type="digit"
+            maxlength="11"
+            value="{{item.amountRaw}}"
+            placeholder="金额"
+            placeholder-class="input-placeholder"
+            data-id="{{item.id}}"
+            bindinput="onDebtAmountInput"
+          />
+        </view>
+
+        <picker
+          class="creditor-picker"
+          range="{{creditorLabels}}"
+          value="{{item.pickerIndex}}"
+          data-id="{{item.id}}"
+          bindchange="onCreditorChange"
+        >
+          <view class="picker-shell">
+            <text class="picker-label">欠</text>
+            <text class="picker-name">{{item.creditorLabel}}</text>
+            <text class="picker-caret">▾</text>
+          </view>
+        </picker>
+
+        <view class="debt-remove" hover-class="link-hover" data-id="{{item.id}}" catchtap="onRemoveDebt">✕</view>
+      </view>
+      <view wx:if="{{item.error}}" class="field-error">{{item.error}}</view>
+    </view>
+
+    <view wx:if="{{!debtRows.length}}" class="muted">没有负债记录，轻松上阵～</view>
+  </view>
+
+  <view class="local-tip">🔒 数据只保存在当前设备，保存后立即写入本地</view>
+
+  <view class="bottom-bar">
+    <view class="primary-btn {{saving ? 'is-saving' : ''}}" bindtap="onSave">
+      {{saving ? '保存中…' : (isEdit ? '保存修改' : '添加玩家')}}
+    </view>
+  </view>
+</view>

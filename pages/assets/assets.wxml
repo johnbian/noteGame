@@ -1,0 +1,113 @@
+<view class="page assets-page">
+  <!-- 搜索与分类 -->
+  <view class="top-card">
+    <view class="search-shell">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        value="{{keyword}}"
+        placeholder="搜索城市或公共建筑"
+        placeholder-class="search-placeholder"
+        confirm-type="search"
+        bindinput="onSearchInput"
+      />
+      <view wx:if="{{keyword}}" class="search-clear" bindtap="onClearSearch">✕</view>
+    </view>
+
+    <view class="tabs">
+      <view class="tab {{tab === 'city' ? 'is-active' : ''}}" data-tab="city" bindtap="onSwitchTab">
+        <text>🏙 城市</text>
+        <text class="tab-badge">{{cityCount}}</text>
+      </view>
+      <view class="tab {{tab === 'building' ? 'is-active' : ''}}" data-tab="building" bindtap="onSwitchTab">
+        <text>🏛 公共建筑</text>
+        <text class="tab-badge">{{buildingCount}}</text>
+      </view>
+    </view>
+
+    <view class="top-tip">💡 点击卡片多选，再点一次即可取消</view>
+  </view>
+
+  <!-- 城市卡牌 -->
+  <block wx:if="{{tab === 'city'}}">
+    <view class="group-card" wx:for="{{cityGroups}}" wx:key="key">
+      <view class="group-head">
+        <view class="group-dot" style="background: {{item.color}}"></view>
+        <text class="group-name">{{item.name}}同色系</text>
+        <text class="group-count">{{item.cards.length}} 座</text>
+      </view>
+
+      <view class="card-grid">
+        <view
+          wx:for="{{item.cards}}"
+          wx:for-item="card"
+          wx:key="key"
+          class="mini-card {{card.isSelected ? 'is-selected' : ''}}"
+          style="border-color: {{card.isSelected ? card.color : '#f6e8d6'}}; background: {{card.isSelected ? card.soft : '#fffdfa'}};"
+          data-key="{{card.key}}"
+          data-type="{{card.type}}"
+          data-refid="{{card.refId}}"
+          bindtap="onToggleSelect"
+        >
+          <view class="mini-accent" style="background: {{card.color}}"></view>
+          <view class="mini-check {{card.isSelected ? 'is-on' : ''}}">
+            <view class="check-mark"></view>
+          </view>
+          <text class="mini-name">{{card.name}}</text>
+          <text class="mini-price">¥{{card.priceText}}</text>
+          <text wx:if="{{card.levelLabel}}" class="mini-level">{{card.levelLabel}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!cityGroups.length}}" class="no-result">
+      <text class="no-result-icon">🧐</text>
+      <text class="no-result-text">没有找到匹配的城市</text>
+    </view>
+  </block>
+
+  <!-- 公共建筑卡牌 -->
+  <block wx:else>
+    <view class="group-card">
+      <view class="group-head">
+        <view class="group-dot" style="background: #5B8DEF"></view>
+        <text class="group-name">公共建筑工程</text>
+        <text class="group-count">{{buildings.length}} 项</text>
+      </view>
+
+      <view class="card-grid building-grid">
+        <view
+          wx:for="{{buildings}}"
+          wx:key="key"
+          class="mini-card {{item.isSelected ? 'is-selected' : ''}}"
+          style="border-color: {{item.isSelected ? item.color : '#f6e8d6'}}; background: {{item.isSelected ? item.soft : '#fffdfa'}};"
+          data-key="{{item.key}}"
+          data-type="{{item.type}}"
+          data-refid="{{item.refId}}"
+          bindtap="onToggleSelect"
+        >
+          <view class="mini-accent" style="background: {{item.color}}"></view>
+          <view class="mini-check {{item.isSelected ? 'is-on' : ''}}">
+            <view class="check-mark"></view>
+          </view>
+          <text class="mini-name">{{item.name}}</text>
+          <text class="mini-price">¥{{item.priceText}}</text>
+          <text class="mini-level">{{item.levelLabel}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!buildings.length}}" class="no-result">
+      <text class="no-result-icon">🧐</text>
+      <text class="no-result-text">没有找到匹配的公共建筑</text>
+    </view>
+  </block>
+
+  <view class="bottom-bar select-bar">
+    <view class="select-summary">
+      <text class="select-count">已选 {{selectedCount}} 项</text>
+      <text class="select-value">估值 ¥{{selectedValueText}}</text>
+    </view>
+    <view class="primary-btn small confirm-btn" bindtap="onConfirm">确定</view>
+  </view>
+</view>

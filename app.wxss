@@ -1,0 +1,226 @@
+/*
+ * 全局卡通视觉基础
+ * 设计关键词：奶油底色 / 大圆角 / 柔和阴影 / 活泼珊瑚橙 + 薄荷绿点缀
+ */
+page {
+  background: #fff8ee;
+  color: #3e3554;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+view,
+text,
+input,
+button,
+image,
+canvas {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: transparent;
+  border-radius: 0;
+}
+
+button::after {
+  border: none;
+}
+
+image {
+  display: block;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24rpx 28rpx 230rpx;
+  background:
+    radial-gradient(circle at 12% 6%, rgba(255, 213, 158, 0.35) 0, rgba(255, 213, 158, 0) 30%),
+    radial-gradient(circle at 92% 18%, rgba(181, 230, 214, 0.28) 0, rgba(181, 230, 214, 0) 26%),
+    linear-gradient(180deg, #fff4e3 0%, #fffaf2 36%, #f8fcf8 100%);
+}
+
+/* 通用卡片 */
+.section-card {
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  background: #ffffff;
+  border: 2rpx solid #fff0de;
+  border-radius: 36rpx;
+  box-shadow: 0 14rpx 32rpx rgba(108, 83, 48, 0.07);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  color: #3e3554;
+  font-size: 30rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+.section-note {
+  color: #aa9f94;
+  font-size: 22rpx;
+}
+
+.link {
+  color: #f07b52;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.required {
+  padding: 4rpx 14rpx;
+  color: #ef6a5f;
+  font-size: 20rpx;
+  background: #fff0ee;
+  border-radius: 999rpx;
+}
+
+.muted {
+  padding: 16rpx 0;
+  color: #b4aaa0;
+  font-size: 24rpx;
+}
+
+.field-label {
+  margin-bottom: 14rpx;
+  color: #7d7168;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+.field-error {
+  margin-top: 10rpx;
+  color: #e2554e;
+  font-size: 22rpx;
+}
+
+/* 通用按钮 */
+.primary-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 94rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 800;
+  letter-spacing: 2rpx;
+  background: linear-gradient(135deg, #ffa268 0%, #f2714b 100%);
+  border-radius: 47rpx;
+  box-shadow: 0 12rpx 26rpx rgba(242, 113, 75, 0.28);
+}
+
+.primary-btn.small {
+  height: 76rpx;
+  padding: 0 38rpx;
+  font-size: 27rpx;
+  border-radius: 38rpx;
+  letter-spacing: 1rpx;
+}
+
+.ghost-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86rpx;
+  color: #6d5f52;
+  font-size: 27rpx;
+  font-weight: 700;
+  background: #ffffff;
+  border: 2rpx solid #f1dfca;
+  border-radius: 43rpx;
+}
+
+.danger-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86rpx;
+  color: #e2554e;
+  font-size: 27rpx;
+  font-weight: 700;
+  background: #fff0ee;
+  border: 2rpx solid #ffd2cd;
+  border-radius: 43rpx;
+}
+
+.pressable {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.pressable:active {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+/* 通用输入 */
+.input-shell {
+  width: 100%;
+  height: 92rpx;
+  padding: 0 26rpx;
+  color: #3e3554;
+  font-size: 30rpx;
+  background: #fff9f0;
+  border: 2rpx solid #f5e7d2;
+  border-radius: 28rpx;
+}
+
+.input-money {
+  display: flex;
+  align-items: center;
+  height: 92rpx;
+  padding: 0 24rpx;
+  background: #fff9f0;
+  border: 2rpx solid #f5e7d2;
+  border-radius: 28rpx;
+}
+
+.money-prefix {
+  margin-right: 12rpx;
+  color: #f2714b;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.money-input {
+  flex: 1;
+  height: 100%;
+  color: #3e3554;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  padding: 18rpx 28rpx calc(18rpx + env(safe-area-inset-bottom));
+  background: rgba(255, 248, 238, 0.96);
+  box-shadow: 0 -10rpx 28rpx rgba(116, 92, 58, 0.07);
+}
+
+.bottom-bar > view {
+  margin-left: 18rpx;
+}
+
+.bottom-bar > view:first-child {
+  margin-left: 0;
+}

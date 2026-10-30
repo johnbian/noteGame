@@ -1,0 +1,11 @@
+<view wx:if="{{visible}}" class="popup-mask" catchtouchmove="noop" bindtap="onMaskTap">
+  <view class="popup-card" catchtap="noop">
+    <view class="popup-icon {{danger ? 'is-danger' : ''}}">{{icon}}</view>
+    <view class="popup-title">{{title}}</view>
+    <view wx:if="{{content}}" class="popup-content">{{content}}</view>
+    <view class="popup-actions">
+      <view wx:if="{{showCancel}}" class="popup-btn cancel" hover-class="btn-hover" bindtap="onCancel">{{cancelText}}</view>
+      <view class="popup-btn confirm {{danger ? 'is-danger' : ''}}" hover-class="btn-hover" bindtap="onConfirm">{{confirmText}}</view>
+    </view>
+  </view>
+</view>

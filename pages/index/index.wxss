@@ -1,0 +1,479 @@
+.home-page {
+  padding-top: 24rpx;
+}
+
+/* ---------- 顶部卡通头图 ---------- */
+.hero {
+  position: relative;
+  padding: 34rpx 34rpx 32rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffe2a8 0%, #ffc9a9 56%, #ffd9c6 100%);
+  border: 4rpx solid rgba(255, 255, 255, 0.7);
+  border-radius: 46rpx;
+  box-shadow: 0 18rpx 38rpx rgba(240, 150, 98, 0.2);
+}
+
+.hero-bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+}
+
+.bubble-a {
+  top: -70rpx;
+  right: -50rpx;
+  width: 210rpx;
+  height: 210rpx;
+}
+
+.bubble-b {
+  bottom: -50rpx;
+  left: -30rpx;
+  width: 140rpx;
+  height: 140rpx;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bubble-c {
+  top: 120rpx;
+  right: 150rpx;
+  width: 34rpx;
+  height: 34rpx;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hero-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.hero-copy {
+  padding-right: 18rpx;
+}
+
+.hero-kicker {
+  display: inline-block;
+  padding: 5rpx 16rpx;
+  color: #a85c32;
+  font-size: 19rpx;
+  font-weight: 800;
+  letter-spacing: 3rpx;
+  background: rgba(255, 255, 255, 0.56);
+  border-radius: 999rpx;
+}
+
+.hero-title {
+  margin-top: 14rpx;
+  color: #5a3a2a;
+  font-size: 52rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+  line-height: 1.15;
+}
+
+.hero-sub {
+  margin-top: 10rpx;
+  color: #8b5a3f;
+  font-size: 23rpx;
+  font-weight: 600;
+}
+
+.count-pill {
+  flex-shrink: 0;
+  padding: 8rpx 20rpx;
+  color: #9c5a37;
+  font-size: 23rpx;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.66);
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  border-radius: 999rpx;
+}
+
+.add-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 94rpx;
+  margin-top: 30rpx;
+  color: #f2714b;
+  font-size: 31rpx;
+  font-weight: 900;
+  letter-spacing: 3rpx;
+  background: #fffdf8;
+  border-radius: 47rpx;
+  box-shadow: 0 12rpx 24rpx rgba(200, 110, 60, 0.18);
+}
+
+.add-btn.is-full {
+  color: #a87559;
+  background: rgba(255, 253, 248, 0.72);
+  box-shadow: 0 8rpx 18rpx rgba(200, 110, 60, 0.1);
+}
+
+.add-plus {
+  margin-right: 10rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ---------- 玩家列表 ---------- */
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 8rpx;
+  margin-bottom: 18rpx;
+}
+
+.list-title {
+  color: #4a3f5c;
+  font-size: 31rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.list-tip {
+  color: #b1a69b;
+  font-size: 21rpx;
+}
+
+.player-card {
+  position: relative;
+  display: block;
+  padding: 26rpx 24rpx 22rpx;
+  margin-bottom: 20rpx;
+  background: #ffffff;
+  border: 2rpx solid #fff0de;
+  border-radius: 38rpx;
+  box-shadow: 0 14rpx 32rpx rgba(108, 83, 48, 0.08);
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+}
+
+.card-hover {
+  opacity: 0.94;
+  transform: scale(0.985);
+}
+
+.avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 108rpx;
+  height: 108rpx;
+  overflow: hidden;
+  border: 4rpx solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 6rpx 16rpx rgba(108, 83, 48, 0.12);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-emoji {
+  font-size: 56rpx;
+  line-height: 1;
+}
+
+.player-main {
+  flex: 1;
+  min-width: 0;
+  padding: 0 54rpx 0 22rpx;
+}
+
+.player-name {
+  display: block;
+  overflow: hidden;
+  color: #3e3554;
+  font-size: 32rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+
+.stat-chip {
+  padding: 5rpx 14rpx;
+  margin: 0 8rpx 6rpx 0;
+  color: #8b7f75;
+  font-size: 20rpx;
+  font-weight: 600;
+  background: #fff7ec;
+  border-radius: 999rpx;
+}
+
+.stat-chip.is-debt {
+  color: #d4534b;
+  background: #fff0ee;
+}
+
+.stat-chip.is-clear {
+  color: #3f8a5a;
+  background: #eef7f0;
+}
+
+/* ---------- 卡片内城市 / 欠款信息 ---------- */
+.card-section {
+  padding-top: 16rpx;
+  margin-top: 18rpx;
+  border-top: 2rpx dashed #f4e7d7;
+}
+
+.card-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.section-label {
+  color: #6b5b4e;
+  font-size: 23rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+.section-side {
+  color: #a89c90;
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.section-side.is-debt {
+  color: #d4534b;
+}
+
+.city-group {
+  margin-top: 10rpx;
+}
+
+.city-group:first-child {
+  margin-top: 0;
+}
+
+.group-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.group-dot {
+  width: 14rpx;
+  height: 14rpx;
+  margin-right: 8rpx;
+  border-radius: 50%;
+}
+
+.group-name {
+  color: #8b7f75;
+  font-size: 20rpx;
+  font-weight: 800;
+}
+
+.group-count {
+  margin-left: 8rpx;
+  color: #c3b6a8;
+  font-size: 18rpx;
+}
+
+.city-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.city-tag {
+  display: flex;
+  align-items: baseline;
+  padding: 6rpx 12rpx;
+  margin: 0 10rpx 10rpx 0;
+  background: #fffdfa;
+  border: 2rpx solid #f0e2d1;
+  border-radius: 14rpx;
+}
+
+.city-name {
+  color: #4a3f5c;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+
+.city-level {
+  margin-left: 8rpx;
+  color: #8b7f75;
+  font-size: 18rpx;
+  font-weight: 700;
+}
+
+.section-empty {
+  padding: 4rpx 0;
+  color: #b1a69b;
+  font-size: 21rpx;
+}
+
+.debt-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 14rpx;
+  margin-top: 8rpx;
+  background: #fff7f3;
+  border-radius: 14rpx;
+}
+
+.debt-line:first-child {
+  margin-top: 0;
+}
+
+.debt-to {
+  color: #7a6a5e;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.debt-amount {
+  color: #d4534b;
+  font-size: 23rpx;
+  font-weight: 900;
+}
+
+.debt-clear {
+  padding: 10rpx 14rpx;
+  color: #3f8a5a;
+  font-size: 21rpx;
+  font-weight: 700;
+  background: #eef7f0;
+  border-radius: 14rpx;
+}
+
+.delete-fab {
+  position: absolute;
+  top: 10rpx;
+  right: 14rpx;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58rpx;
+  height: 58rpx;
+  color: #cbb9a7;
+  font-size: 34rpx;
+  font-weight: 600;
+  line-height: 1;
+  background: #fff8ef;
+  border-radius: 50%;
+}
+
+/* ---------- 空状态 ---------- */
+.empty-state {
+  padding: 54rpx 40rpx 60rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 3rpx dashed #f1dfc8;
+  border-radius: 44rpx;
+}
+
+.empty-art {
+  position: relative;
+  width: 300rpx;
+  height: 250rpx;
+  margin: 0 auto;
+}
+
+.empty-board {
+  position: absolute;
+  top: 34rpx;
+  left: 52rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 196rpx;
+  height: 180rpx;
+  font-size: 96rpx;
+  background: linear-gradient(145deg, #e7f4ff, #d8ecff);
+  border: 6rpx solid #ffffff;
+  border-radius: 42rpx;
+  box-shadow: 0 16rpx 30rpx rgba(86, 125, 168, 0.16);
+  transform: rotate(-6deg);
+}
+
+.empty-face {
+  position: absolute;
+  right: 0;
+  bottom: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 116rpx;
+  height: 116rpx;
+  font-size: 58rpx;
+  background: #ffe2c4;
+  border: 5rpx solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 10rpx 22rpx rgba(200, 130, 80, 0.16);
+}
+
+.empty-cloud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 46rpx;
+  opacity: 0.9;
+}
+
+.empty-spark {
+  position: absolute;
+  top: 40rpx;
+  right: 16rpx;
+  font-size: 34rpx;
+}
+
+.empty-title {
+  margin-top: 24rpx;
+  color: #4a3f5c;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.empty-text {
+  margin-top: 12rpx;
+  color: #a89c90;
+  font-size: 25rpx;
+}
+
+/* ---------- 底部清空 ---------- */
+.clear-all {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88rpx;
+  color: #d4534b;
+  font-size: 27rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+  background: #fff0ee;
+  border: 2rpx solid #ffd3cd;
+  border-radius: 44rpx;
+}

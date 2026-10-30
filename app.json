@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/edit/edit",
+    "pages/assets/assets"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFF3DF",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "大富翁记录器",
+    "backgroundColor": "#FFF8EE",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
