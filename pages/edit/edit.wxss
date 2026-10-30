@@ -205,25 +205,22 @@
   border-radius: 999rpx;
 }
 
+/* 用网格固定两列，避免百分比宽度 + 外边距在取整后意外换行 */
 .asset-chips {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 6rpx;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14rpx 20rpx;
+  margin-top: 20rpx;
 }
 
 .asset-chip {
   display: flex;
   align-items: center;
-  width: calc(50% - 10rpx);
+  min-width: 0;
   padding: 12rpx 14rpx;
-  margin-top: 14rpx;
   background: #fffdfa;
   border: 2rpx solid #f6e8d6;
   border-radius: 22rpx;
-}
-
-.asset-chip:nth-child(2n) {
-  margin-left: 20rpx;
 }
 
 .chip-dot {
@@ -538,25 +535,15 @@
   }
 
   .asset-chips {
-    justify-content: flex-start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 16px;
+    margin-top: 10px;
   }
 
   .asset-chip {
-    width: calc((100% - 32px) / 3);
     padding: 8px 10px;
-    margin-top: 10px;
-    margin-right: 16px;
     border-width: 1px;
     border-radius: 14px;
-  }
-
-  .asset-chip:nth-child(2n) {
-    margin-left: 0;
-    margin-right: 16px;
-  }
-
-  .asset-chip:nth-child(3n) {
-    margin-right: 0;
   }
 
   .chip-dot {

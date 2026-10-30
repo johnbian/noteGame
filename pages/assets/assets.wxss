@@ -106,6 +106,7 @@
 .group-head {
   display: flex;
   align-items: center;
+  margin-bottom: 16rpx;
 }
 
 .group-dot {
@@ -128,10 +129,11 @@
   font-size: 21rpx;
 }
 
+/* 用网格固定列数，避免百分比宽度 + 外边距在取整后意外换行 */
 .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16rpx 14rpx;
 }
 
 .mini-card {
@@ -140,20 +142,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: calc((100% - 28rpx) / 3);
+  min-width: 0;
   min-height: 164rpx;
   padding: 34rpx 12rpx 16rpx;
-  margin-top: 16rpx;
-  margin-right: 14rpx;
   overflow: hidden;
   background: #fffdfa;
   border: 3rpx solid #f6e8d6;
   border-radius: 26rpx;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.mini-card:nth-child(3n) {
-  margin-right: 0;
 }
 
 .mini-card.is-selected {
@@ -239,17 +235,12 @@
   border-radius: 999rpx;
 }
 
+.building-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .building-grid .mini-card {
-  width: calc((100% - 14rpx) / 2);
   min-height: 172rpx;
-}
-
-.building-grid .mini-card:nth-child(3n) {
-  margin-right: 14rpx;
-}
-
-.building-grid .mini-card:nth-child(2n) {
-  margin-right: 0;
 }
 
 /* ---------- 空搜索结果 ---------- */
@@ -360,6 +351,10 @@
     border-radius: 24px;
   }
 
+  .group-head {
+    margin-bottom: 10px;
+  }
+
   .group-dot {
     width: 12px;
     height: 12px;
@@ -375,18 +370,16 @@
     font-size: 12px;
   }
 
-  .mini-card {
-    width: calc((100% - 32px) / 3);
-    min-height: 112px;
-    padding: 24px 8px 12px;
-    margin-top: 10px;
-    margin-right: 16px;
-    border-width: 2px;
-    border-radius: 16px;
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 16px;
   }
 
-  .mini-card:nth-child(3n) {
-    margin-right: 0;
+  .mini-card {
+    min-height: 112px;
+    padding: 24px 8px 12px;
+    border-width: 2px;
+    border-radius: 16px;
   }
 
   .mini-accent {
@@ -427,17 +420,12 @@
     font-size: 11px;
   }
 
+  .building-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .building-grid .mini-card {
-    width: calc((100% - 32px) / 3);
     min-height: 118px;
-  }
-
-  .building-grid .mini-card:nth-child(2n) {
-    margin-right: 16px;
-  }
-
-  .building-grid .mini-card:nth-child(3n) {
-    margin-right: 0;
   }
 
   .no-result {

@@ -653,22 +653,16 @@
     padding: 4px 4px 12px;
   }
 
+  /* 网格固定列数，末行不足时保持左对齐 */
   .asset-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+    align-items: start;
   }
 
-  /* 固定间距左对齐，最后一行不足时不会被拉开 */
   .asset-block {
-    width: calc((100% - 16px) / 2);
-    margin-right: 16px;
-    margin-bottom: 20px;
-  }
-
-  .asset-block:nth-child(2n) {
-    margin-right: 0;
+    margin-bottom: 0;
   }
 
   .asset-actions {
@@ -775,15 +769,7 @@
 }
 
 @media (min-width: 1000px) {
-  .asset-block {
-    width: calc((100% - 32px) / 3);
-  }
-
-  .asset-block:nth-child(2n) {
-    margin-right: 16px;
-  }
-
-  .asset-block:nth-child(3n) {
-    margin-right: 0;
+  .asset-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
