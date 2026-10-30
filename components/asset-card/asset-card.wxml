@@ -2,7 +2,7 @@
   <view class="card-inner {{flipped ? 'is-flipped' : ''}}">
     <!-- 正面：名称 / 介绍 / 抵押 / 赎回 / 状态 -->
     <view class="face front">
-      <view class="front-head" style="background: {{asset.tone}}">
+      <view class="front-head" style="background: linear-gradient(120deg, {{asset.tone}} 0%, {{asset.tone}} 58%, {{asset.color}} 100%)">
         <view class="head-glow"></view>
         <view class="name-wrap">
           <text class="card-name">{{asset.name}}</text>
@@ -44,7 +44,7 @@
 
     <!-- 背面：观光费 / 建造费（公共建筑为计费规则） -->
     <view class="face back">
-      <view class="back-head" style="background: {{asset.tone}}">
+      <view class="back-head" style="background: linear-gradient(120deg, {{asset.tone}} 0%, {{asset.tone}} 58%, {{asset.color}} 100%)">
         <view class="head-glow"></view>
         <view class="back-head-text">
           <text class="back-name">{{asset.name}}</text>

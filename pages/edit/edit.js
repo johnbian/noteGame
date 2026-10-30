@@ -162,7 +162,7 @@ Page({
   },
 
   refreshAssets(assets) {
-    const views = assets.map((asset) => model.buildAssetView(asset)).filter(Boolean);
+    const views = model.sortAssetViews(assets.map((asset) => model.buildAssetView(asset)).filter(Boolean));
     let value = 0;
     views.forEach((view) => {
       value += view.price;

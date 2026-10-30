@@ -200,9 +200,13 @@ function buildAssetView(asset) {
     mortgageText: formatMoney(card.mortgage),
     redeemText: formatMoney(card.redeem),
     intro: card.intro,
-    color: card.color,
-    soft: card.soft,
-    tone: card.tone || '#3e3554',
+    // 城市本身不带颜色字段，必须从所属同色系取色，否则所有城市会回退成同一个颜色
+    color: isCity ? (group ? group.color : '#B9B0A6') : card.color,
+    soft: isCity ? (group ? group.soft : '#F4EFE8') : card.soft,
+    tone: (isCity ? (group ? group.tone : '') : card.tone) || '#3e3554',
+    groupKey: group ? group.key : 'building',
+    groupOrder: group ? CITY_GROUPS.findIndex((item) => item.key === group.key) : 99,
+    cardOrder: isCity ? CITIES.findIndex((city) => city.id === card.id) : 0,
     groupName: group ? group.name : card.category,
     groupLabel: group ? `${group.name} · 同色系` : card.category,
     category: card.category || '',
@@ -213,6 +217,14 @@ function buildAssetView(asset) {
     homestayCostText: isCity ? formatMoney(card.homestayCost) : '',
     resortCostText: isCity ? formatMoney(card.resortCost) : '',
     ruleLines: card.ruleLines || []
+  });
+}
+
+// 详情页/编辑页展示顺序：同色系城市排在一起，公共建筑放最后
+function sortAssetViews(views) {
+  return (views || []).slice().sort((a, b) => {
+    if (a.groupOrder !== b.groupOrder) return a.groupOrder - b.groupOrder;
+    return a.cardOrder - b.cardOrder;
   });
 }
 
@@ -315,6 +327,7 @@ module.exports = {
   mergeAssets,
   getLevelInfo,
   buildAssetView,
+  sortAssetViews,
   calcPlayerTotals,
   buildCityGroups,
   getCreditorName,

@@ -43,7 +43,9 @@ Page({
     this.player = player;
     const allPlayers = store.listPlayers();
     const stats = model.calcPlayerTotals(player);
-    const assetViews = player.assets.map((asset) => model.buildAssetView(asset)).filter(Boolean);
+    const assetViews = model.sortAssetViews(
+      player.assets.map((asset) => model.buildAssetView(asset)).filter(Boolean)
+    );
     const debtsView = model.buildDebtViews(player, allPlayers);
 
     let editingId = this.data.editingId;
