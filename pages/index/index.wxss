@@ -144,15 +144,23 @@
   font-size: 21rpx;
 }
 
+.player-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .player-card {
   position: relative;
   display: block;
-  padding: 26rpx 24rpx 22rpx;
-  margin-bottom: 20rpx;
+  width: 48.6%;
+  padding: 18rpx 16rpx 16rpx;
+  margin-bottom: 14rpx;
   background: #ffffff;
   border: 2rpx solid #fff0de;
-  border-radius: 38rpx;
-  box-shadow: 0 14rpx 32rpx rgba(108, 83, 48, 0.08);
+  border-radius: 30rpx;
+  box-shadow: 0 10rpx 24rpx rgba(108, 83, 48, 0.08);
   transition: transform 0.16s ease, opacity 0.16s ease;
 }
 
@@ -171,12 +179,12 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 108rpx;
-  height: 108rpx;
+  width: 68rpx;
+  height: 68rpx;
   overflow: hidden;
-  border: 4rpx solid #ffffff;
+  border: 3rpx solid #ffffff;
   border-radius: 50%;
-  box-shadow: 0 6rpx 16rpx rgba(108, 83, 48, 0.12);
+  box-shadow: 0 4rpx 12rpx rgba(108, 83, 48, 0.12);
 }
 
 .avatar-img {
@@ -185,39 +193,39 @@
 }
 
 .avatar-emoji {
-  font-size: 56rpx;
+  font-size: 36rpx;
   line-height: 1;
 }
 
-.player-main {
+.name-wrap {
   flex: 1;
   min-width: 0;
-  padding: 0 54rpx 0 22rpx;
+  padding: 0 54rpx 0 12rpx;
 }
 
 .player-name {
   display: block;
   overflow: hidden;
   color: #3e3554;
-  font-size: 32rpx;
+  font-size: 27rpx;
   font-weight: 900;
   letter-spacing: 1rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.stat-row {
+.money-row {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10rpx;
 }
 
 .stat-chip {
-  padding: 5rpx 14rpx;
-  margin: 0 8rpx 6rpx 0;
+  padding: 4rpx 10rpx;
+  margin: 0 6rpx 4rpx 0;
   color: #8b7f75;
-  font-size: 20rpx;
-  font-weight: 600;
+  font-size: 18rpx;
+  font-weight: 700;
   background: #fff7ec;
   border-radius: 999rpx;
 }
@@ -234,8 +242,8 @@
 
 /* ---------- 卡片内城市 / 欠款信息 ---------- */
 .card-section {
-  padding-top: 16rpx;
-  margin-top: 18rpx;
+  padding-top: 12rpx;
+  margin-top: 12rpx;
   border-top: 2rpx dashed #f4e7d7;
 }
 
@@ -243,19 +251,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10rpx;
+  margin-bottom: 8rpx;
 }
 
 .section-label {
   color: #6b5b4e;
-  font-size: 23rpx;
+  font-size: 20rpx;
   font-weight: 900;
   letter-spacing: 1rpx;
 }
 
 .section-side {
   color: #a89c90;
-  font-size: 20rpx;
+  font-size: 17rpx;
   font-weight: 700;
 }
 
@@ -264,7 +272,7 @@
 }
 
 .city-group {
-  margin-top: 10rpx;
+  margin-top: 8rpx;
 }
 
 .city-group:first-child {
@@ -274,26 +282,26 @@
 .group-line {
   display: flex;
   align-items: center;
-  margin-bottom: 8rpx;
+  margin-bottom: 6rpx;
 }
 
 .group-dot {
-  width: 14rpx;
-  height: 14rpx;
-  margin-right: 8rpx;
+  width: 12rpx;
+  height: 12rpx;
+  margin-right: 6rpx;
   border-radius: 50%;
 }
 
 .group-name {
   color: #8b7f75;
-  font-size: 20rpx;
+  font-size: 18rpx;
   font-weight: 800;
 }
 
 .group-count {
-  margin-left: 8rpx;
+  margin-left: 6rpx;
   color: #c3b6a8;
-  font-size: 18rpx;
+  font-size: 16rpx;
 }
 
 .city-tags {
@@ -304,40 +312,40 @@
 .city-tag {
   display: flex;
   align-items: baseline;
-  padding: 6rpx 12rpx;
-  margin: 0 10rpx 10rpx 0;
+  padding: 4rpx 8rpx;
+  margin: 0 6rpx 6rpx 0;
   background: #fffdfa;
   border: 2rpx solid #f0e2d1;
-  border-radius: 14rpx;
+  border-radius: 10rpx;
 }
 
 .city-name {
   color: #4a3f5c;
-  font-size: 22rpx;
+  font-size: 20rpx;
   font-weight: 900;
 }
 
 .city-level {
-  margin-left: 8rpx;
+  margin-left: 4rpx;
   color: #8b7f75;
-  font-size: 18rpx;
+  font-size: 17rpx;
   font-weight: 700;
 }
 
 .section-empty {
   padding: 4rpx 0;
   color: #b1a69b;
-  font-size: 21rpx;
+  font-size: 19rpx;
 }
 
 .debt-line {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10rpx 14rpx;
-  margin-top: 8rpx;
+  padding: 6rpx 10rpx;
+  margin-top: 6rpx;
   background: #fff7f3;
-  border-radius: 14rpx;
+  border-radius: 10rpx;
 }
 
 .debt-line:first-child {
@@ -345,38 +353,45 @@
 }
 
 .debt-to {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
   color: #7a6a5e;
-  font-size: 22rpx;
+  font-size: 19rpx;
   font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .debt-amount {
+  flex-shrink: 0;
+  margin-left: 6rpx;
   color: #d4534b;
-  font-size: 23rpx;
+  font-size: 20rpx;
   font-weight: 900;
 }
 
 .debt-clear {
-  padding: 10rpx 14rpx;
+  padding: 6rpx 10rpx;
   color: #3f8a5a;
-  font-size: 21rpx;
+  font-size: 19rpx;
   font-weight: 700;
   background: #eef7f0;
-  border-radius: 14rpx;
+  border-radius: 10rpx;
 }
 
 .delete-fab {
   position: absolute;
-  top: 10rpx;
-  right: 14rpx;
+  top: 8rpx;
+  right: 8rpx;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 58rpx;
-  height: 58rpx;
+  width: 46rpx;
+  height: 46rpx;
   color: #cbb9a7;
-  font-size: 34rpx;
+  font-size: 28rpx;
   font-weight: 600;
   line-height: 1;
   background: #fff8ef;

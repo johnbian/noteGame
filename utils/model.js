@@ -265,12 +265,14 @@ function buildCityGroups(assets) {
       .map((city) => {
         const asset = ownedMap[city.id];
         const level = getLevelInfo(asset);
+        const homestayCount = asset.resort ? 0 : asset.homestayCount || 0;
         return {
           key: asset.id,
           name: city.name,
           levelLabel: level.label,
+          levelShort: asset.resort ? '度假村' : homestayCount > 0 ? `${homestayCount}民宿` : '空地',
           isResort: !!asset.resort,
-          homestayCount: asset.resort ? 0 : asset.homestayCount || 0
+          homestayCount
         };
       });
     return {

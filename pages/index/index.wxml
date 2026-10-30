@@ -43,20 +43,21 @@
           <text wx:else class="avatar-emoji">{{item.avatar.value}}</text>
         </view>
 
-        <view class="player-main">
+        <view class="name-wrap">
           <view class="player-name">{{item.nickname}}</view>
-          <view class="stat-row">
-            <view class="stat-chip">💰 存款 ¥{{item.depositText}}</view>
-            <view class="stat-chip {{item.hasDebt ? 'is-debt' : 'is-clear'}}">📮 {{item.debtChipText}}</view>
-          </view>
         </view>
+      </view>
+
+      <view class="money-row">
+        <view class="stat-chip">💰 存款 ¥{{item.depositText}}</view>
+        <view class="stat-chip {{item.hasDebt ? 'is-debt' : 'is-clear'}}">📮 {{item.debtChipText}}</view>
       </view>
 
       <!-- 城市资产：按同色系分组，展示民宿 / 度假村状态 -->
       <view class="card-section">
         <view class="card-section-head">
-          <text class="section-label">🏙 城市资产</text>
-          <text wx:if="{{item.hasBuildings}}" class="section-side">公共建筑 ×{{item.buildingCount}}</text>
+          <text class="section-label">🏙 城市</text>
+          <text wx:if="{{item.hasBuildings}}" class="section-side">公建 ×{{item.buildingCount}}</text>
         </view>
 
         <view wx:if="{{item.cityGroups.length}}" class="city-groups">
@@ -75,7 +76,7 @@
                 style="background: {{group.soft}}; border-color: {{group.color}};"
               >
                 <text class="city-name" style="color: {{group.tone}}">{{city.name}}</text>
-                <text class="city-level">{{city.levelLabel}}</text>
+                <text class="city-level">{{city.levelShort}}</text>
               </view>
             </view>
           </view>
@@ -86,7 +87,7 @@
       <!-- 欠款：逐条展示欠谁多少钱 -->
       <view class="card-section">
         <view class="card-section-head">
-          <text class="section-label">📮 欠款明细</text>
+          <text class="section-label">📮 欠款</text>
           <text wx:if="{{item.hasDebt}}" class="section-side is-debt">共 ¥{{item.debtTotalText}}</text>
         </view>
 
