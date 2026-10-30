@@ -224,3 +224,135 @@ image {
 .bottom-bar > view:first-child {
   margin-left: 0;
 }
+
+/* ---------- 平板 / 大屏适配 ----------
+ * rpx 随屏幕宽度放大，平板上会整体放大一倍以上，
+ * 这里改用固定 px 密度，并把内容限制在居中列内。
+ */
+@media (min-width: 600px) {
+  page {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .page {
+    max-width: 1080px;
+    padding: 20px 32px 120px;
+    margin: 0 auto;
+  }
+
+  .section-card {
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-width: 1px;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(108, 83, 48, 0.06);
+  }
+
+  .section-head {
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+
+  .section-note {
+    font-size: 12px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+
+  .required {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  .muted {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .field-label {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .field-error {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  .primary-btn {
+    height: 50px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    box-shadow: 0 8px 18px rgba(242, 113, 75, 0.24);
+  }
+
+  .primary-btn.small {
+    height: 42px;
+    padding: 0 22px;
+    font-size: 14px;
+    border-radius: 21px;
+  }
+
+  .ghost-btn {
+    height: 46px;
+    font-size: 14px;
+    border-width: 1px;
+    border-radius: 23px;
+  }
+
+  .danger-outline {
+    height: 46px;
+    font-size: 14px;
+    border-width: 1px;
+    border-radius: 23px;
+  }
+
+  .input-shell {
+    height: 48px;
+    padding: 0 16px;
+    font-size: 16px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .input-money {
+    height: 48px;
+    padding: 0 14px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .money-prefix {
+    margin-right: 8px;
+    font-size: 17px;
+  }
+
+  .money-input {
+    font-size: 18px;
+  }
+
+  .bottom-bar {
+    left: 0;
+    right: 0;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 10px 32px calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 -6px 18px rgba(116, 92, 58, 0.06);
+  }
+
+  .bottom-bar > view {
+    margin-left: 12px;
+  }
+
+  .bottom-bar > view:first-child {
+    margin-left: 0;
+  }
+}

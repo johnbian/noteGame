@@ -390,3 +390,206 @@
   padding: 8rpx 0 16rpx;
   margin-top: auto;
 }
+
+/* ---------- 平板 / 大屏 ----------
+ * 卡牌在平板上按两列或三列排布，用固定 px 密度避免 rpx 放大后溢出。
+ */
+@media (min-width: 600px) {
+  .card-scene {
+    height: 340px;
+    font-size: 13px;
+    perspective: 1000px;
+  }
+
+  .face {
+    border-radius: 24px;
+    box-shadow: 0 10px 24px rgba(76, 58, 38, 0.14);
+  }
+
+  .front-head {
+    padding: 14px 18px 13px;
+  }
+
+  .head-glow {
+    top: -64px;
+    right: -32px;
+    width: 170px;
+    height: 170px;
+  }
+
+  .name-wrap {
+    padding-right: 12px;
+  }
+
+  .card-name {
+    font-size: 23px;
+    letter-spacing: 1px;
+  }
+
+  .meta-row {
+    margin-top: 6px;
+  }
+
+  .group-dot {
+    width: 10px;
+    height: 10px;
+    margin-right: 7px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.55);
+  }
+
+  .meta-text {
+    font-size: 12px;
+  }
+
+  .badge-mortgaged {
+    margin-left: 8px;
+    padding: 2px 9px;
+    font-size: 11px;
+  }
+
+  .price-pill {
+    padding: 6px 13px;
+    border-radius: 14px;
+    box-shadow: 0 4px 9px rgba(40, 30, 20, 0.16);
+  }
+
+  .price-symbol {
+    font-size: 13px;
+  }
+
+  .price-num {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+
+  .front-body {
+    padding: 14px 18px 14px;
+  }
+
+  .intro {
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    -webkit-line-clamp: 3;
+  }
+
+  .money-cell {
+    padding: 9px 11px;
+    border-radius: 14px;
+  }
+
+  .money-cell + .money-cell {
+    margin-left: 9px;
+  }
+
+  .money-label {
+    font-size: 11px;
+  }
+
+  .money-value {
+    margin-top: 1px;
+    font-size: 19px;
+    letter-spacing: 0;
+  }
+
+  .front-footer {
+    padding-top: 12px;
+  }
+
+  .level-chip {
+    padding: 4px 10px;
+    font-size: 11px;
+    border-width: 1px;
+  }
+
+  .flip-hint {
+    font-size: 11px;
+  }
+
+  .back-head {
+    height: 60px;
+    padding: 0 18px;
+  }
+
+  .back-name {
+    font-size: 20px;
+    letter-spacing: 0;
+  }
+
+  .back-sub {
+    margin-top: 1px;
+    font-size: 11px;
+  }
+
+  .back-mortgaged {
+    padding: 3px 10px;
+    font-size: 11px;
+    border-width: 1px;
+  }
+
+  .back-body {
+    padding: 8px 16px 0;
+  }
+
+  .toll-list {
+    padding: 1px 0;
+  }
+
+  .toll-row {
+    height: 28px;
+    padding: 0 9px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .toll-dot {
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+  }
+
+  .build-row {
+    padding: 6px 10px;
+    margin-top: 6px;
+    border-radius: 12px;
+  }
+
+  .build-cell + .build-cell {
+    padding-left: 10px;
+    border-left-width: 1px;
+  }
+
+  .build-label {
+    font-size: 11px;
+  }
+
+  .build-value {
+    font-size: 14px;
+  }
+
+  .back-note {
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .rule-list {
+    padding-top: 6px;
+  }
+
+  .rule-line {
+    margin-bottom: 6px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .rule-dot {
+    width: 7px;
+    height: 7px;
+    margin-top: 7px;
+    margin-right: 6px;
+  }
+
+  .back-footer {
+    padding: 6px 0 10px;
+  }
+}

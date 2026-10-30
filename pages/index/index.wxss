@@ -511,3 +511,308 @@
   border: 2rpx solid #ffd3cd;
   border-radius: 44rpx;
 }
+
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .home-page {
+    padding-top: 16px;
+  }
+
+  .hero {
+    padding: 24px 28px 26px;
+    margin-bottom: 20px;
+    border-width: 3px;
+    border-radius: 30px;
+    box-shadow: 0 12px 26px rgba(240, 150, 98, 0.16);
+  }
+
+  .bubble-a {
+    top: -44px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .bubble-b {
+    bottom: -34px;
+    left: -20px;
+    width: 96px;
+    height: 96px;
+  }
+
+  .bubble-c {
+    top: 80px;
+    right: 110px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .hero-kicker {
+    padding: 3px 10px;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .hero-title {
+    margin-top: 10px;
+    font-size: 34px;
+    letter-spacing: 2px;
+  }
+
+  .hero-sub {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .count-pill {
+    padding: 5px 13px;
+    font-size: 14px;
+    border-width: 1px;
+  }
+
+  .sync-pill {
+    padding: 5px 12px;
+    margin-top: 8px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+
+  .add-btn {
+    height: 52px;
+    margin-top: 20px;
+    font-size: 17px;
+    border-radius: 26px;
+    box-shadow: 0 8px 18px rgba(200, 110, 60, 0.16);
+  }
+
+  .add-plus {
+    margin-right: 6px;
+    font-size: 24px;
+  }
+
+  .list-head {
+    padding: 0 4px;
+    margin-bottom: 12px;
+  }
+
+  .list-title {
+    font-size: 19px;
+  }
+
+  .list-tip {
+    font-size: 12px;
+  }
+
+  /* 卡片高度随资产数量变化，用多列瀑布流避免同排留白 */
+  .player-list {
+    display: block;
+    column-count: 3;
+    column-gap: 12px;
+  }
+
+  .player-card {
+    display: block;
+    width: 100%;
+    padding: 14px 14px 12px;
+    margin-bottom: 12px;
+    border-width: 1px;
+    border-radius: 20px;
+    box-shadow: 0 6px 16px rgba(108, 83, 48, 0.07);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-width: 2px;
+    box-shadow: 0 2px 6px rgba(108, 83, 48, 0.12);
+  }
+
+  .avatar-emoji {
+    font-size: 20px;
+  }
+
+  .name-wrap {
+    padding: 0 26px 0 8px;
+  }
+
+  .player-name {
+    font-size: 15px;
+  }
+
+  .money-row {
+    margin-top: 8px;
+  }
+
+  .stat-chip {
+    padding: 2px 7px;
+    margin: 0 4px 4px 0;
+    font-size: 11px;
+  }
+
+  .card-section {
+    padding-top: 8px;
+    margin-top: 8px;
+    border-top-width: 1px;
+  }
+
+  .card-section-head {
+    margin-bottom: 6px;
+  }
+
+  .section-label {
+    font-size: 12px;
+  }
+
+  .section-side {
+    font-size: 10px;
+  }
+
+  .city-group {
+    margin-top: 6px;
+  }
+
+  .group-line {
+    margin-bottom: 4px;
+  }
+
+  .group-dot {
+    width: 7px;
+    height: 7px;
+    margin-right: 4px;
+  }
+
+  .group-name {
+    font-size: 11px;
+  }
+
+  .group-count {
+    margin-left: 4px;
+    font-size: 10px;
+  }
+
+  .city-tag {
+    padding: 2px 6px;
+    margin: 0 4px 4px 0;
+    border-width: 1px;
+    border-radius: 7px;
+  }
+
+  .city-name {
+    font-size: 11px;
+  }
+
+  .city-level {
+    margin-left: 3px;
+    font-size: 10px;
+  }
+
+  .section-empty {
+    font-size: 11px;
+  }
+
+  .debt-line {
+    padding: 4px 7px;
+    margin-top: 4px;
+    border-radius: 7px;
+  }
+
+  .debt-to {
+    font-size: 11px;
+  }
+
+  .debt-amount {
+    margin-left: 4px;
+    font-size: 11px;
+  }
+
+  .debt-clear {
+    padding: 4px 7px;
+    font-size: 11px;
+    border-radius: 7px;
+  }
+
+  .delete-fab {
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    font-size: 16px;
+  }
+
+  .empty-state {
+    padding: 36px 28px 40px;
+    margin-top: 14px;
+    border-width: 2px;
+    border-radius: 28px;
+  }
+
+  .empty-art {
+    width: 210px;
+    height: 175px;
+  }
+
+  .empty-board {
+    top: 24px;
+    left: 36px;
+    width: 138px;
+    height: 126px;
+    font-size: 66px;
+    border-width: 4px;
+    border-radius: 28px;
+    box-shadow: 0 10px 20px rgba(86, 125, 168, 0.14);
+  }
+
+  .empty-face {
+    bottom: 2px;
+    width: 82px;
+    height: 82px;
+    font-size: 40px;
+    border-width: 3px;
+  }
+
+  .empty-cloud {
+    font-size: 32px;
+  }
+
+  .empty-spark {
+    top: 28px;
+    right: 10px;
+    font-size: 24px;
+  }
+
+  .empty-title {
+    margin-top: 16px;
+    font-size: 20px;
+  }
+
+  .empty-text {
+    margin-top: 8px;
+    font-size: 15px;
+  }
+
+  .clear-all {
+    height: 48px;
+    font-size: 15px;
+    background: #fff0ee;
+    border-width: 1px;
+    border-radius: 24px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 699px) {
+  .player-list {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1000px) {
+  .player-list {
+    column-count: 4;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+}

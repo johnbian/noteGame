@@ -98,6 +98,52 @@
   transform: scale(0.98);
 }
 
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .popup-mask {
+    padding: 0 24px;
+  }
+
+  .popup-card {
+    max-width: 420px;
+    padding: 28px 26px 22px;
+    border-width: 3px;
+    border-radius: 28px;
+    box-shadow: 0 18px 40px rgba(62, 53, 84, 0.22);
+  }
+
+  .popup-icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 14px;
+    font-size: 34px;
+  }
+
+  .popup-title {
+    font-size: 21px;
+  }
+
+  .popup-content {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .popup-actions {
+    margin-top: 24px;
+  }
+
+  .popup-btn {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+
+  .popup-btn + .popup-btn {
+    margin-left: 12px;
+  }
+}
+
 @keyframes mask-in {
   from { opacity: 0; }
   to { opacity: 1; }

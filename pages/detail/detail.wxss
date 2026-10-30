@@ -510,3 +510,266 @@
 .link-hover {
   opacity: 0.72;
 }
+
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .detail-page {
+    padding-top: 16px;
+  }
+
+  .detail-hero {
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-width: 2px;
+    border-radius: 26px;
+    box-shadow: 0 10px 22px rgba(92, 141, 126, 0.1);
+  }
+
+  .shape-a {
+    top: -40px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .shape-b {
+    bottom: -44px;
+    left: 84px;
+    width: 84px;
+    height: 84px;
+  }
+
+  .player-avatar {
+    width: 84px;
+    height: 84px;
+    border-width: 3px;
+    border-radius: 28px;
+    box-shadow: 0 8px 16px rgba(108, 83, 48, 0.12);
+  }
+
+  .player-avatar-emoji {
+    font-size: 44px;
+  }
+
+  .player-intro {
+    padding: 0 12px 0 16px;
+  }
+
+  .player-name {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+
+  .player-meta {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .edit-chip {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+
+  .chart-card {
+    padding: 20px 24px;
+  }
+
+  .chart-wrap {
+    width: 220px;
+    height: 220px;
+  }
+
+  .chart-canvas {
+    width: 220px;
+    height: 220px;
+  }
+
+  .chart-center-label {
+    font-size: 12px;
+  }
+
+  .chart-center-value {
+    margin-top: 1px;
+    font-size: 21px;
+  }
+
+  .legend {
+    padding-left: 28px;
+  }
+
+  .legend-item {
+    margin-bottom: 10px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+  }
+
+  .legend-label {
+    font-size: 11px;
+  }
+
+  .legend-value {
+    font-size: 15px;
+  }
+
+  .net-warning {
+    padding: 8px 12px;
+    margin-top: 12px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .debt-total {
+    font-size: 14px;
+  }
+
+  .debt-line {
+    padding: 10px 2px;
+    border-bottom-width: 1px;
+  }
+
+  .debt-line:last-child {
+    padding-bottom: 2px;
+  }
+
+  .debt-icon {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+
+  .debt-to {
+    font-size: 15px;
+  }
+
+  .debt-amount {
+    font-size: 16px;
+  }
+
+  .assets-head {
+    padding: 4px 4px 12px;
+  }
+
+  .asset-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .asset-block {
+    width: 48.6%;
+    margin-bottom: 20px;
+  }
+
+  .asset-actions {
+    margin-top: 10px;
+  }
+
+  .asset-action {
+    height: 42px;
+    margin-left: 8px;
+    font-size: 13px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .builder {
+    padding: 14px 16px 16px;
+    margin-top: 10px;
+    border-width: 2px;
+    border-radius: 18px;
+    box-shadow: 0 6px 16px rgba(108, 83, 48, 0.05);
+  }
+
+  .builder-title {
+    font-size: 15px;
+  }
+
+  .builder-close {
+    font-size: 13px;
+  }
+
+  .builder-line {
+    margin-top: 12px;
+  }
+
+  .builder-label {
+    width: 76px;
+    font-size: 14px;
+  }
+
+  .stepper {
+    padding: 3px;
+    border-width: 1px;
+  }
+
+  .step-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 19px;
+  }
+
+  .step-value {
+    min-width: 66px;
+    font-size: 14px;
+  }
+
+  .builder-cost {
+    font-size: 12px;
+  }
+
+  .resort-btn {
+    height: 38px;
+    padding: 0 16px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+
+  .builder-tip {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .builder-hint {
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .empty-assets {
+    padding: 30px 24px 32px;
+    border-width: 2px;
+    border-radius: 24px;
+  }
+
+  .empty-assets-art {
+    font-size: 56px;
+  }
+
+  .empty-assets-title {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .empty-assets-text {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .empty-assets-btn {
+    height: 44px;
+    padding: 0 20px;
+    margin-top: 14px;
+    font-size: 14px;
+    border-width: 1px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .asset-block {
+    width: 32.2%;
+  }
+}

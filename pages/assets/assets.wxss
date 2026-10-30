@@ -284,3 +284,170 @@
   flex: none;
   width: 210rpx;
 }
+
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .assets-page {
+    padding-top: 16px;
+  }
+
+  .top-card {
+    padding: 18px;
+    margin-bottom: 16px;
+    border-width: 1px;
+    border-radius: 24px;
+  }
+
+  .search-shell {
+    height: 48px;
+    padding: 0 16px;
+    border-width: 1px;
+  }
+
+  .search-icon {
+    margin-right: 8px;
+    font-size: 17px;
+  }
+
+  .search-input {
+    font-size: 15px;
+  }
+
+  .search-clear {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .tabs {
+    padding: 4px;
+    margin-top: 12px;
+  }
+
+  .tab {
+    height: 42px;
+    font-size: 15px;
+  }
+
+  .tab-badge {
+    margin-left: 6px;
+    padding: 1px 7px;
+    font-size: 11px;
+  }
+
+  .top-tip {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .group-card {
+    padding: 18px;
+    margin-bottom: 14px;
+    border-width: 1px;
+    border-radius: 24px;
+  }
+
+  .group-dot {
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+  }
+
+  .group-name {
+    font-size: 17px;
+    letter-spacing: 0;
+  }
+
+  .group-count {
+    font-size: 12px;
+  }
+
+  .mini-card {
+    width: 23.5%;
+    min-height: 112px;
+    padding: 24px 8px 12px;
+    margin-top: 10px;
+    border-width: 2px;
+    border-radius: 16px;
+  }
+
+  .mini-accent {
+    right: 20px;
+    left: 20px;
+    height: 5px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .mini-check {
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-width: 2px;
+    box-shadow: 0 2px 6px rgba(108, 83, 48, 0.1);
+  }
+
+  .check-mark {
+    width: 7px;
+    height: 12px;
+    margin-top: -3px;
+    border-width: 0 3px 3px 0;
+  }
+
+  .mini-name {
+    font-size: 15px;
+  }
+
+  .mini-price {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .mini-level {
+    padding: 2px 7px;
+    margin-top: 5px;
+    font-size: 11px;
+  }
+
+  .building-grid .mini-card {
+    width: 32.2%;
+    min-height: 118px;
+  }
+
+  .no-result {
+    padding: 40px 20px;
+    border-width: 2px;
+    border-radius: 24px;
+  }
+
+  .no-result-icon {
+    font-size: 40px;
+  }
+
+  .no-result-text {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .select-count {
+    font-size: 16px;
+  }
+
+  .select-value {
+    font-size: 12px;
+  }
+
+  .confirm-btn {
+    width: 140px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .mini-card {
+    width: 18.5%;
+  }
+
+  .building-grid .mini-card {
+    width: 23.5%;
+  }
+}

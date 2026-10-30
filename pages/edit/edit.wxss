@@ -421,3 +421,241 @@
 .link-hover {
   opacity: 0.72;
 }
+
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .edit-page {
+    max-width: 820px;
+    padding-top: 16px;
+  }
+
+  .form-hero {
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    border-width: 2px;
+    border-radius: 26px;
+    box-shadow: 0 10px 22px rgba(92, 141, 126, 0.1);
+  }
+
+  .form-hero::after {
+    top: -24px;
+    right: 16px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .form-kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .form-title {
+    margin-top: 6px;
+    font-size: 25px;
+    letter-spacing: 0;
+  }
+
+  .form-sub {
+    margin-top: 4px;
+    font-size: 13px;
+  }
+
+  .avatar-card {
+    padding: 20px;
+  }
+
+  .avatar-preview {
+    width: 92px;
+    height: 92px;
+    border-width: 3px;
+    border-radius: 28px;
+    box-shadow: 0 8px 16px rgba(108, 83, 48, 0.12);
+  }
+
+  .avatar-preview-emoji {
+    font-size: 48px;
+  }
+
+  .avatar-main-text {
+    padding-left: 18px;
+  }
+
+  .avatar-hint {
+    font-size: 13px;
+  }
+
+  .wx-avatar-btn {
+    width: 132px;
+    height: 38px;
+    margin-top: 8px;
+    font-size: 13px;
+    border-width: 1px;
+  }
+
+  .avatar-grid {
+    padding: 10px 8px;
+    margin-top: 16px;
+    border-radius: 18px;
+  }
+
+  .avatar-option {
+    width: 42px;
+    height: 42px;
+    margin: 3px;
+    border-width: 2px;
+  }
+
+  .avatar-option-emoji {
+    font-size: 22px;
+  }
+
+  .avatar-check {
+    top: -4px;
+    right: -4px;
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    border-width: 1px;
+  }
+
+  .asset-bar {
+    padding: 12px 16px;
+    border-radius: 16px;
+  }
+
+  .asset-count {
+    font-size: 15px;
+  }
+
+  .asset-value {
+    font-size: 13px;
+  }
+
+  .asset-pick {
+    padding: 6px 14px;
+    font-size: 14px;
+    border-width: 1px;
+  }
+
+  .asset-chips {
+    justify-content: space-between;
+  }
+
+  .asset-chip {
+    width: 32.2%;
+    padding: 8px 10px;
+    margin-top: 10px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .asset-chip:nth-child(2n) {
+    margin-left: 0;
+  }
+
+  .chip-dot {
+    width: 10px;
+    height: 26px;
+    margin-right: 8px;
+    border-radius: 5px;
+  }
+
+  .chip-name {
+    font-size: 14px;
+  }
+
+  .chip-meta {
+    font-size: 12px;
+  }
+
+  .asset-empty {
+    padding: 14px 16px;
+    margin-top: 10px;
+    border-width: 2px;
+    border-radius: 18px;
+  }
+
+  .asset-empty-icon {
+    margin-right: 12px;
+    font-size: 30px;
+  }
+
+  .asset-empty-title {
+    font-size: 15px;
+  }
+
+  .asset-empty-sub {
+    font-size: 12px;
+  }
+
+  .asset-empty-arrow {
+    font-size: 26px;
+  }
+
+  .debt-summary {
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+  }
+
+  .debt-summary-label {
+    font-size: 14px;
+  }
+
+  .debt-summary-value {
+    font-size: 19px;
+  }
+
+  .debt-row {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-radius: 18px;
+  }
+
+  .debt-money {
+    height: 48px;
+    padding: 0 12px;
+    border-radius: 12px;
+  }
+
+  .debt-input {
+    font-size: 16px;
+  }
+
+  .creditor-picker {
+    width: 168px;
+    margin-left: 10px;
+  }
+
+  .picker-shell {
+    height: 48px;
+    padding: 0 10px;
+    border-width: 1px;
+    border-radius: 12px;
+  }
+
+  .picker-label {
+    font-size: 12px;
+  }
+
+  .picker-name {
+    font-size: 14px;
+  }
+
+  .picker-caret {
+    font-size: 12px;
+  }
+
+  .debt-remove {
+    width: 34px;
+    height: 34px;
+    margin-left: 8px;
+    font-size: 15px;
+  }
+
+  .local-tip {
+    margin: 6px 0 10px;
+    font-size: 12px;
+  }
+}

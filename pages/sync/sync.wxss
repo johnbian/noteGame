@@ -161,3 +161,103 @@
   font-size: 21rpx;
   line-height: 1.5;
 }
+
+/* ---------- 平板 / 大屏 ---------- */
+@media (min-width: 600px) {
+  .sync-page {
+    max-width: 820px;
+    padding-bottom: 60px;
+  }
+
+  .sync-hero {
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    border-width: 2px;
+    border-radius: 26px;
+  }
+
+  .sync-cloud {
+    width: 72px;
+    height: 72px;
+    margin-right: 16px;
+    font-size: 38px;
+    line-height: 72px;
+    border-radius: 22px;
+  }
+
+  .sync-title {
+    font-size: 22px;
+    letter-spacing: 0;
+  }
+
+  .sync-sub {
+    margin-top: 5px;
+    font-size: 13px;
+  }
+
+  .status-card {
+    padding: 4px 20px;
+  }
+
+  .status-row {
+    padding: 14px 0;
+    border-bottom-width: 1px;
+  }
+
+  .status-label {
+    font-size: 14px;
+  }
+
+  .status-value {
+    font-size: 15px;
+  }
+
+  .config-tip {
+    padding: 9px 12px;
+    margin: 6px 0 10px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .action-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+  }
+
+  .sync-action {
+    width: 48.8%;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-width: 2px;
+    border-radius: 22px;
+  }
+
+  .action-icon {
+    width: 58px;
+    height: 58px;
+    margin-right: 14px;
+    font-size: 28px;
+    line-height: 58px;
+    border-radius: 18px;
+  }
+
+  .action-title {
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+
+  .action-sub {
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  .sync-note {
+    padding: 2px 8px 0;
+  }
+
+  .note-line {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}

@@ -30,6 +30,11 @@ Page({
     this.loadPlayer();
   },
 
+  // 平板旋转 / 分屏后画布尺寸变化，需要重绘以保证清晰度
+  onResize() {
+    this.drawChart();
+  },
+
   // 每次操作后都从本地存储重新读取，保证视图与落盘数据一致
   loadPlayer() {
     const playerId = this.data.playerId;
