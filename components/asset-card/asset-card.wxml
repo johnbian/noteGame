@@ -1,47 +1,51 @@
 <view class="card-scene" bindtap="toggleFlip">
   <view class="card-inner {{flipped ? 'is-flipped' : ''}}">
     <!-- 正面：名称 / 介绍 / 抵押 / 赎回 / 状态 -->
-    <view class="face front" style="background: {{asset.soft}}">
-      <view class="front-top">
+    <view class="face front">
+      <view class="front-head" style="background: {{asset.tone}}">
+        <view class="head-glow"></view>
         <view class="name-wrap">
-          <text class="card-name" style="color: {{asset.tone}}">{{asset.name}}</text>
+          <text class="card-name">{{asset.name}}</text>
           <view class="meta-row">
             <view class="group-dot" style="background: {{asset.color}}"></view>
             <text class="meta-text">{{asset.groupLabel}}</text>
             <text wx:if="{{asset.mortgaged}}" class="badge-mortgaged">已抵押</text>
           </view>
         </view>
-        <view class="price-pill" style="background: {{asset.color}}">
+        <view class="price-pill" style="color: {{asset.tone}}">
           <text class="price-symbol">¥</text>
           <text class="price-num">{{asset.priceText}}</text>
         </view>
       </view>
 
-      <view class="intro">{{asset.intro}}</view>
+      <view class="front-body">
+        <view class="intro">{{asset.intro}}</view>
 
-      <view class="money-grid">
-        <view class="money-cell">
-          <text class="money-label">抵押价值</text>
-          <text class="money-value" style="color: {{asset.tone}}">¥{{asset.mortgageText}}</text>
+        <view class="money-grid">
+          <view class="money-cell" style="background: {{asset.soft}}">
+            <text class="money-label">抵押价值</text>
+            <text class="money-value" style="color: {{asset.tone}}">¥{{asset.mortgageText}}</text>
+          </view>
+          <view class="money-cell" style="background: {{asset.soft}}">
+            <text class="money-label">赎回价值</text>
+            <text class="money-value" style="color: {{asset.tone}}">¥{{asset.redeemText}}</text>
+          </view>
         </view>
-        <view class="money-cell">
-          <text class="money-label">赎回价值</text>
-          <text class="money-value" style="color: {{asset.tone}}">¥{{asset.redeemText}}</text>
-        </view>
-      </view>
 
-      <view class="front-footer">
-        <view class="level-chip" style="background: {{asset.soft}}; color: {{asset.tone}}">
-          <text>{{asset.isCity ? '🏠' : '🏛'}}</text>
-          <text>{{asset.levelLabel}}</text>
+        <view class="front-footer">
+          <view class="level-chip" style="background: {{asset.soft}}; border-color: {{asset.color}}; color: {{asset.tone}}">
+            <text>{{asset.isCity ? '🏠' : '🏛'}}</text>
+            <text>{{asset.levelLabel}}</text>
+          </view>
+          <text class="flip-hint">轻点翻面 ↻</text>
         </view>
-        <text class="flip-hint">轻点翻面 ↻</text>
       </view>
     </view>
 
     <!-- 背面：观光费 / 建造费（公共建筑为计费规则） -->
     <view class="face back">
-      <view class="back-head" style="background: {{asset.color}}">
+      <view class="back-head" style="background: {{asset.tone}}">
+        <view class="head-glow"></view>
         <view class="back-head-text">
           <text class="back-name">{{asset.name}}</text>
           <text class="back-sub">{{asset.isCity ? '观光费 · 建造费' : asset.category}}</text>
@@ -52,35 +56,35 @@
       <view class="back-body">
         <block wx:if="{{asset.isCity}}">
           <view class="toll-list">
-            <view class="toll-row {{asset.levelIndex === 0 ? 'is-active' : ''}}">
+            <view class="toll-row {{asset.levelIndex === 0 ? 'is-active' : ''}}" style="{{asset.levelIndex === 0 ? 'background:' + asset.soft + ';color:' + asset.tone : ''}}">
               <view class="toll-label-wrap">
                 <view wx:if="{{asset.levelIndex === 0}}" class="toll-dot" style="background: {{asset.color}}"></view>
                 <text class="toll-label">空地</text>
               </view>
               <text class="toll-value">¥{{asset.tollsText[0]}}</text>
             </view>
-            <view class="toll-row {{asset.levelIndex === 1 ? 'is-active' : ''}}">
+            <view class="toll-row {{asset.levelIndex === 1 ? 'is-active' : ''}}" style="{{asset.levelIndex === 1 ? 'background:' + asset.soft + ';color:' + asset.tone : ''}}">
               <view class="toll-label-wrap">
                 <view wx:if="{{asset.levelIndex === 1}}" class="toll-dot" style="background: {{asset.color}}"></view>
                 <text class="toll-label">1 间民宿</text>
               </view>
               <text class="toll-value">¥{{asset.tollsText[1]}}</text>
             </view>
-            <view class="toll-row {{asset.levelIndex === 2 ? 'is-active' : ''}}">
+            <view class="toll-row {{asset.levelIndex === 2 ? 'is-active' : ''}}" style="{{asset.levelIndex === 2 ? 'background:' + asset.soft + ';color:' + asset.tone : ''}}">
               <view class="toll-label-wrap">
                 <view wx:if="{{asset.levelIndex === 2}}" class="toll-dot" style="background: {{asset.color}}"></view>
                 <text class="toll-label">2 间民宿</text>
               </view>
               <text class="toll-value">¥{{asset.tollsText[2]}}</text>
             </view>
-            <view class="toll-row {{asset.levelIndex === 3 ? 'is-active' : ''}}">
+            <view class="toll-row {{asset.levelIndex === 3 ? 'is-active' : ''}}" style="{{asset.levelIndex === 3 ? 'background:' + asset.soft + ';color:' + asset.tone : ''}}">
               <view class="toll-label-wrap">
                 <view wx:if="{{asset.levelIndex === 3}}" class="toll-dot" style="background: {{asset.color}}"></view>
                 <text class="toll-label">3 间民宿</text>
               </view>
               <text class="toll-value">¥{{asset.tollsText[3]}}</text>
             </view>
-            <view class="toll-row {{asset.levelIndex === 4 ? 'is-active' : ''}}">
+            <view class="toll-row {{asset.levelIndex === 4 ? 'is-active' : ''}}" style="{{asset.levelIndex === 4 ? 'background:' + asset.soft + ';color:' + asset.tone : ''}}">
               <view class="toll-label-wrap">
                 <view wx:if="{{asset.levelIndex === 4}}" class="toll-dot" style="background: {{asset.color}}"></view>
                 <text class="toll-label">度假村</text>
@@ -89,14 +93,14 @@
             </view>
           </view>
 
-          <view class="build-row">
+          <view class="build-row" style="background: {{asset.soft}}">
             <view class="build-cell">
               <text class="build-label">建民宿</text>
-              <text class="build-value">¥{{asset.homestayCostText}} / 间</text>
+              <text class="build-value" style="color: {{asset.tone}}">¥{{asset.homestayCostText}} / 间</text>
             </view>
             <view class="build-cell">
               <text class="build-label">建度假村</text>
-              <text class="build-value">¥{{asset.resortCostText}}</text>
+              <text class="build-value" style="color: {{asset.tone}}">¥{{asset.resortCostText}}</text>
             </view>
           </view>
           <view class="back-note">持有同色系全部城市时，观光费翻倍</view>
@@ -113,7 +117,7 @@
         </block>
 
         <view class="back-footer">
-          <view class="level-chip {{asset.isCity ? '' : 'is-building'}}" style="background: {{asset.soft}}; color: {{asset.tone}}">
+          <view class="level-chip" style="background: {{asset.soft}}; border-color: {{asset.color}}; color: {{asset.tone}}">
             <text>{{asset.isCity ? '🏠' : '🏛'}}</text>
             <text>{{asset.levelLabel}}</text>
           </view>
