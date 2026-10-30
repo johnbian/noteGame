@@ -1,5 +1,6 @@
 const { CITY_GROUPS, CITIES, BUILDINGS, getCard } = require('../../data/gameData.js');
 const model = require('../../utils/model.js');
+const store = require('../../utils/store.js');
 
 Page({
   data: {
@@ -15,17 +16,36 @@ Page({
 
   onLoad() {
     this.selected = [];
+    this.ownerId = '';
+    this.ownerMap = {};
+    this.rebuildOwnerMap();
     this.rebuild();
 
     const channel = this.getOpenerEventChannel && this.getOpenerEventChannel();
     if (channel && channel.on) {
       channel.on('initAssets', (payload) => {
         const selected = payload && Array.isArray(payload.selected) ? payload.selected : [];
+        this.ownerId = (payload && payload.ownerId) || '';
         // 保留资产原有的建筑/抵押状态
         this.selected = selected.map((asset) => Object.assign({}, asset));
+        this.rebuildOwnerMap();
         this.rebuild();
       });
     }
+  },
+
+  // 记录“其他玩家”已占用的卡牌，这些卡不能再被当前玩家选择
+  rebuildOwnerMap() {
+    const map = {};
+    store.listPlayers().forEach((player) => {
+      if (player.id === this.ownerId) return;
+      (player.assets || []).forEach((asset) => {
+        const key = model.assetKey(asset);
+        if (!map[key]) map[key] = [];
+        map[key].push(player.nickname);
+      });
+    });
+    this.ownerMap = map;
   },
 
   // 根据当前 Tab、搜索词、已选状态重建列表
@@ -74,6 +94,9 @@ Page({
   buildCardView(type, card, selectedMap) {
     const key = `${type}:${card.id}`;
     const asset = selectedMap[key];
+    const owners = this.ownerMap[key] || [];
+    // 已属于其他玩家的卡牌不可再选；如果本玩家早就持有（历史数据），仍按已选展示以便取消
+    const isLocked = owners.length > 0 && !asset;
     let levelLabel = '';
     if (asset) {
       levelLabel = model.getLevelInfo(asset).label;
@@ -91,6 +114,8 @@ Page({
       soft: card.soft,
       tone: card.tone || '#3e3554',
       isSelected: !!asset,
+      isLocked,
+      ownerText: owners.slice(0, 2).join('、') + (owners.length > 2 ? ' 等' : ''),
       levelLabel
     };
   },
@@ -117,9 +142,15 @@ Page({
     const index = this.selected.findIndex((asset) => model.assetKey(asset) === key);
     if (index >= 0) {
       this.selected.splice(index, 1);
-    } else {
-      this.selected.push(model.createAsset(type, refId));
+      this.rebuild();
+      return;
     }
+    const owners = this.ownerMap[key];
+    if (owners && owners.length) {
+      wx.showToast({ title: `已被${owners[0]}占用`, icon: 'none' });
+      return;
+    }
+    this.selected.push(model.createAsset(type, refId));
     this.rebuild();
   },
 

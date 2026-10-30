@@ -265,6 +265,36 @@
   font-weight: 700;
 }
 
+/* ---------- 功能卡 ---------- */
+.func-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 16rpx 20rpx;
+  background: #fbf8ff;
+  border: 2rpx solid #ece3fa;
+  border-radius: 24rpx;
+}
+
+.func-item + .func-item {
+  margin-top: 12rpx;
+}
+
+.func-item-icon {
+  flex-shrink: 0;
+  margin-right: 12rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.func-item-text {
+  flex: 1;
+  min-width: 0;
+  color: #5d5349;
+  font-size: 25rpx;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
 .debt-amount {
   color: #e2554e;
   font-size: 28rpx;
@@ -647,6 +677,25 @@
 
   .debt-amount {
     font-size: 16px;
+  }
+
+  .func-item {
+    padding: 10px 14px;
+    border-width: 1px;
+    border-radius: 14px;
+  }
+
+  .func-item + .func-item {
+    margin-top: 8px;
+  }
+
+  .func-item-icon {
+    margin-right: 8px;
+    font-size: 16px;
+  }
+
+  .func-item-text {
+    font-size: 15px;
   }
 
   .assets-head {

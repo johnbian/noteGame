@@ -259,6 +259,41 @@
   background: #eef7f0;
 }
 
+/* 功能卡摘要：单行省略，完整内容在详情页 */
+.func-teaser {
+  display: flex;
+  align-items: center;
+  margin-top: 8rpx;
+  padding: 5rpx 12rpx;
+  background: #f8f4ff;
+  border-radius: 999rpx;
+}
+
+.func-teaser-icon {
+  flex-shrink: 0;
+  margin-right: 6rpx;
+  font-size: 18rpx;
+}
+
+.func-teaser-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: #6d5b90;
+  font-size: 18rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.func-teaser-more {
+  flex-shrink: 0;
+  margin-left: 8rpx;
+  color: #8f6fc0;
+  font-size: 18rpx;
+  font-weight: 800;
+}
+
 /* ---------- 卡片内城市 / 欠款信息 ---------- */
 .card-section {
   padding-top: 12rpx;
@@ -647,6 +682,26 @@
   .stat-chip {
     padding: 2px 7px;
     margin: 0 4px 4px 0;
+    font-size: 11px;
+  }
+
+  .func-teaser {
+    padding: 3px 8px;
+    margin-top: 6px;
+    border-radius: 999px;
+  }
+
+  .func-teaser-icon {
+    margin-right: 4px;
+    font-size: 11px;
+  }
+
+  .func-teaser-text {
+    font-size: 11px;
+  }
+
+  .func-teaser-more {
+    margin-left: 6px;
     font-size: 11px;
   }
 

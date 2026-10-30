@@ -7,6 +7,8 @@ const { AVATARS, CITIES, CITY_GROUPS, getCard, getGroupById } = require('../data
 const MAX_PLAYERS = 8;
 const MAX_NICKNAME_LENGTH = 10;
 const MAX_AMOUNT = 99999999;
+const MAX_FUNCTION_CARDS = 12;
+const MAX_FUNCTION_CARD_LENGTH = 100;
 
 let idSeed = 0;
 
@@ -112,6 +114,22 @@ function normalizeDebt(raw) {
   };
 }
 
+// 功能卡：每张只有一段手写描述，空描述直接丢弃
+function normalizeFunctionCards(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((item) => {
+      const source = typeof item === 'string' ? { text: item } : item || {};
+      const text = String(source.text === undefined || source.text === null ? '' : source.text)
+        .trim()
+        .slice(0, MAX_FUNCTION_CARD_LENGTH);
+      if (!text) return null;
+      return { id: source.id || createId('func'), text };
+    })
+    .filter(Boolean)
+    .slice(0, MAX_FUNCTION_CARDS);
+}
+
 function normalizePlayer(raw) {
   const source = raw || {};
   const assets = Array.isArray(source.assets)
@@ -125,6 +143,7 @@ function normalizePlayer(raw) {
     nickname: String(source.nickname || '未命名玩家'),
     avatar: typeof source.avatar === 'string' && source.avatar ? source.avatar : AVATARS[0].value,
     assets,
+    functionCards: normalizeFunctionCards(source.functionCards),
     deposit: Math.max(0, roundMoney(source.deposit || 0)),
     debts,
     createdAt: source.createdAt || Date.now(),
@@ -139,6 +158,7 @@ function createPlayer(data) {
     nickname: source.nickname,
     avatar: source.avatar,
     assets: source.assets || [],
+    functionCards: source.functionCards || [],
     deposit: source.deposit || 0,
     debts: source.debts || [],
     createdAt: Date.now(),
@@ -312,6 +332,8 @@ module.exports = {
   MAX_PLAYERS,
   MAX_NICKNAME_LENGTH,
   MAX_AMOUNT,
+  MAX_FUNCTION_CARDS,
+  MAX_FUNCTION_CARD_LENGTH,
   createId,
   roundMoney,
   formatMoney,
@@ -321,6 +343,7 @@ module.exports = {
   createAsset,
   normalizeAsset,
   normalizeDebt,
+  normalizeFunctionCards,
   normalizePlayer,
   createPlayer,
   assetKey,

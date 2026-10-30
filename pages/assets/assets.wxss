@@ -235,6 +235,26 @@
   border-radius: 999rpx;
 }
 
+/* 其他玩家已占用的卡牌：变淡并加锁标记，点击只提示不可选 */
+.mini-card.is-locked {
+  opacity: 0.6;
+  border-style: dashed;
+}
+
+.mini-owner {
+  max-width: 100%;
+  padding: 3rpx 10rpx;
+  margin-top: 6rpx;
+  overflow: hidden;
+  color: #7b6a9c;
+  font-size: 17rpx;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background: #f2ecfb;
+  border-radius: 999rpx;
+}
+
 .building-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -418,6 +438,12 @@
     padding: 2px 7px;
     margin-top: 5px;
     font-size: 11px;
+  }
+
+  .mini-owner {
+    padding: 2px 7px;
+    margin-top: 4px;
+    font-size: 10px;
   }
 
   .building-grid {

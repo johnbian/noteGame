@@ -85,6 +85,41 @@
     </view>
   </view>
 
+  <!-- 功能卡 -->
+  <view class="section-card">
+    <view class="section-head">
+      <text class="section-title">功能卡</text>
+      <text class="link" bindtap="onAddFunctionCard">＋ 添加功能卡</text>
+    </view>
+
+    <view wx:for="{{functionCards}}" wx:key="id" class="func-row">
+      <view class="func-row-head">
+        <text class="func-index">🃏 第 {{index + 1}} 张</text>
+        <view class="func-remove" hover-class="link-hover" data-id="{{item.id}}" catchtap="onRemoveFunctionCard">✕</view>
+      </view>
+      <textarea
+        class="func-input"
+        value="{{item.text}}"
+        maxlength="{{maxFunctionCardLength}}"
+        placeholder="写下这张功能卡的效果，例如：免费停靠一次"
+        placeholder-class="input-placeholder"
+        auto-height
+        cursor-spacing="24"
+        data-id="{{item.id}}"
+        bindinput="onFunctionCardInput"
+      />
+    </view>
+
+    <view wx:if="{{!functionCards.length}}" class="func-empty" bindtap="onAddFunctionCard">
+      <text class="func-empty-icon">🃏</text>
+      <view class="func-empty-text">
+        <text class="func-empty-title">还没有功能卡</text>
+        <text class="func-empty-sub">点一下添加，描述手卡的效果</text>
+      </view>
+      <text class="func-empty-arrow">›</text>
+    </view>
+  </view>
+
   <!-- 存款 -->
   <view class="section-card">
     <view class="section-head">

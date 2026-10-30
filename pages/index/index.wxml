@@ -56,6 +56,13 @@
         <view class="stat-chip {{item.hasDebt ? 'is-debt' : 'is-clear'}}">📮 {{item.debtChipText}}</view>
       </view>
 
+      <!-- 功能卡：只露出第一张的摘要，详情页看完整内容 -->
+      <view wx:if="{{item.hasFunctionCards}}" class="func-teaser">
+        <text class="func-teaser-icon">🃏</text>
+        <text class="func-teaser-text">{{item.functionCards[0].text}}</text>
+        <text class="func-teaser-more">×{{item.functionCards.length}}</text>
+      </view>
+
       <!-- 城市资产：按同色系分组，展示民宿 / 度假村状态 -->
       <view class="card-section">
         <view class="card-section-head">

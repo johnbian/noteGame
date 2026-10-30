@@ -294,6 +294,90 @@
   font-size: 40rpx;
 }
 
+/* ---------- 功能卡 ---------- */
+.func-row {
+  padding: 16rpx;
+  margin-bottom: 14rpx;
+  background: #fbf8ff;
+  border: 2rpx solid #ece3fa;
+  border-radius: 28rpx;
+}
+
+.func-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.func-index {
+  color: #8d7fae;
+  font-size: 20rpx;
+  font-weight: 700;
+}
+
+.func-remove {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 52rpx;
+  height: 52rpx;
+  margin-left: 12rpx;
+  color: #a07fc9;
+  font-size: 23rpx;
+  font-weight: 800;
+  background: #f3edfc;
+  border-radius: 50%;
+}
+
+.func-input {
+  width: 100%;
+  min-height: 64rpx;
+  color: #4a3f5c;
+  font-size: 24rpx;
+  line-height: 1.55;
+}
+
+.func-empty {
+  display: flex;
+  align-items: center;
+  padding: 22rpx;
+  margin-top: 16rpx;
+  background: #fbf8ff;
+  border: 3rpx dashed #e6dcf6;
+  border-radius: 28rpx;
+}
+
+.func-empty-icon {
+  margin-right: 16rpx;
+  font-size: 46rpx;
+}
+
+.func-empty-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.func-empty-title {
+  color: #5b4a7d;
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.func-empty-sub {
+  margin-top: 4rpx;
+  color: #a99fbb;
+  font-size: 21rpx;
+}
+
+.func-empty-arrow {
+  color: #d5cbe8;
+  font-size: 40rpx;
+}
+
 /* ---------- 负债 ---------- */
 .debt-summary {
   display: flex;
@@ -582,6 +666,57 @@
   }
 
   .asset-empty-arrow {
+    font-size: 26px;
+  }
+
+  .func-row {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-radius: 18px;
+  }
+
+  .func-row-head {
+    margin-bottom: 6px;
+  }
+
+  .func-index {
+    font-size: 12px;
+  }
+
+  .func-remove {
+    width: 34px;
+    height: 34px;
+    margin-left: 8px;
+    font-size: 15px;
+  }
+
+  .func-input {
+    min-height: 44px;
+    font-size: 14px;
+  }
+
+  .func-empty {
+    padding: 14px 16px;
+    margin-top: 10px;
+    border-width: 2px;
+    border-radius: 18px;
+  }
+
+  .func-empty-icon {
+    margin-right: 12px;
+    font-size: 30px;
+  }
+
+  .func-empty-title {
+    font-size: 15px;
+  }
+
+  .func-empty-sub {
+    font-size: 12px;
+  }
+
+  .func-empty-arrow {
     font-size: 26px;
   }
 

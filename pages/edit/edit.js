@@ -22,6 +22,9 @@ Page({
     selectedAssets: [],
     assetViews: [],
     assetValueText: '0',
+    functionCards: [],
+    maxFunctionCards: model.MAX_FUNCTION_CARDS,
+    maxFunctionCardLength: model.MAX_FUNCTION_CARD_LENGTH,
     creditorOptions: [ADMIN_OPTION],
     creditorLabels: ['管理员'],
     debtRows: [],
@@ -89,7 +92,8 @@ Page({
         avatar: player.avatar,
         deposit: String(player.deposit)
       },
-      debtRows
+      debtRows,
+      functionCards: (player.functionCards || []).map((card) => ({ id: card.id, text: card.text }))
     });
     this.refreshAssets(player.assets || []);
     this.refreshDebtTotal(debtRows);
@@ -151,7 +155,10 @@ Page({
         }
       },
       success: (res) => {
-        res.eventChannel.emit('initAssets', { selected: this.data.selectedAssets });
+        res.eventChannel.emit('initAssets', {
+          selected: this.data.selectedAssets,
+          ownerId: this.data.playerId
+        });
       }
     });
   },
@@ -171,6 +178,32 @@ Page({
       selectedAssets: assets,
       assetViews: views,
       assetValueText: model.formatMoney(value)
+    });
+  },
+
+  /* ---------- 功能卡 ---------- */
+  onAddFunctionCard() {
+    if (this.data.functionCards.length >= this.data.maxFunctionCards) {
+      wx.showToast({ title: `最多 ${this.data.maxFunctionCards} 张功能卡`, icon: 'none' });
+      return;
+    }
+    this.setData({
+      functionCards: this.data.functionCards.concat([{ id: model.createId('func'), text: '' }])
+    });
+  },
+
+  onFunctionCardInput(e) {
+    const id = e.currentTarget.dataset.id;
+    const cards = this.data.functionCards.map((card) =>
+      card.id === id ? Object.assign({}, card, { text: e.detail.value }) : card
+    );
+    this.setData({ functionCards: cards });
+  },
+
+  onRemoveFunctionCard(e) {
+    const id = e.currentTarget.dataset.id;
+    this.setData({
+      functionCards: this.data.functionCards.filter((card) => card.id !== id)
     });
   },
 
@@ -278,6 +311,9 @@ Page({
       nickname: nickname.value,
       avatar: this.data.form.avatar,
       assets: this.data.selectedAssets,
+      functionCards: this.data.functionCards
+        .map((card) => ({ id: card.id, text: String(card.text || '').trim() }))
+        .filter((card) => card.text),
       deposit: deposit.value,
       debts
     };

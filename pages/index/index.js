@@ -30,6 +30,7 @@ Page({
       const assets = player.assets || [];
       const buildingCount = assets.filter((asset) => asset.type === 'building').length;
       const debtsView = model.buildDebtViews(player, allPlayers);
+      const functionCards = player.functionCards || [];
       return {
         id: player.id,
         nickname: player.nickname,
@@ -37,6 +38,8 @@ Page({
         cityGroups: model.buildCityGroups(assets),
         buildingCount,
         hasBuildings: buildingCount > 0,
+        functionCards,
+        hasFunctionCards: functionCards.length > 0,
         depositText: totals.depositText,
         debtsView,
         hasDebt: debtsView.length > 0,

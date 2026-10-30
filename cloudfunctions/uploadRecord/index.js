@@ -15,6 +15,23 @@ function isObject(value) {
   return !!value && typeof value === 'object' && !Array.isArray(value);
 }
 
+// 功能卡：只保留 id + 描述，限制张数与文本长度
+function sanitizeFunctionCards(input) {
+  if (!Array.isArray(input)) return [];
+  const cards = [];
+  for (let i = 0; i < input.length && cards.length < 12; i += 1) {
+    const raw = input[i];
+    if (!isObject(raw) || typeof raw.text !== 'string') continue;
+    const text = raw.text.trim().slice(0, 100);
+    if (!text) continue;
+    cards.push({
+      id: typeof raw.id === 'string' && raw.id ? raw.id.slice(0, 64) : `func_${cards.length}`,
+      text
+    });
+  }
+  return cards;
+}
+
 // 只保留白名单字段，避免任意 JSON 把云端记录撑大或污染结构
 function sanitizePlayers(input) {
   if (!Array.isArray(input) || input.length > MAX_PLAYERS) return null;
@@ -31,6 +48,7 @@ function sanitizePlayers(input) {
       avatar: typeof raw.avatar === 'string' ? raw.avatar.slice(0, 1000) : 'emoji:🎩',
       deposit: Number.isFinite(deposit) ? Math.max(0, Math.round(deposit * 100) / 100) : 0,
       assets: Array.isArray(raw.assets) ? raw.assets.slice(0, 30) : [],
+      functionCards: sanitizeFunctionCards(raw.functionCards),
       debts: Array.isArray(raw.debts) ? raw.debts.slice(0, 30) : [],
       createdAt: Number(raw.createdAt) || Date.now(),
       updatedAt: Number(raw.updatedAt) || Date.now()

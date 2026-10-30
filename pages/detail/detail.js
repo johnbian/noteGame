@@ -9,6 +9,7 @@ Page({
     stats: {},
     assetViews: [],
     debtsView: [],
+    functionCards: [],
     editingId: '',
     modalVisible: false,
     modalTitle: '',
@@ -68,6 +69,7 @@ Page({
         stats,
         assetViews,
         debtsView,
+        functionCards: player.functionCards || [],
         editingId
       },
       () => this.drawChart()
